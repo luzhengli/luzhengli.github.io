@@ -29,48 +29,6 @@
     </entry>
     
     
-    
-    <entry>
-      <title>C笔记</title>
-      <link href="/2020/04/16/C%E7%AC%94%E8%AE%B0.html"/>
-      <url>/2020/04/16/C%E7%AC%94%E8%AE%B0.html</url>
-      
-        <content type="html"><![CDATA[<h1 id="一个计算机背景知识"><a href="#一个计算机背景知识" class="headerlink" title="一个计算机背景知识"></a>一个计算机背景知识</h1><h2 id="计算机中数字以二进制补码形式存储"><a href="#计算机中数字以二进制补码形式存储" class="headerlink" title="计算机中数字以二进制补码形式存储"></a>计算机中数字以二进制补码形式存储</h2><p>原码、反码、补码是什么？为什么要用？以及数学背景：<a href="https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html#!comments" target="_blank" rel="noopener">https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html#!comments</a></p><p><strong>注：-128的补码是<code>10000000</code>，且没有原码和反码！计算机中一个八位有符号数的范围是：-128~127</strong></p><h1 id="C程序的运行步骤"><a href="#C程序的运行步骤" class="headerlink" title="C程序的运行步骤"></a>C程序的运行步骤</h1><p><img src="file://D:/Li/PicturesForTypora/C%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.jpg?lastModify=1586982887" alt="img"></p><h1 id="算法以及表示"><a href="#算法以及表示" class="headerlink" title="算法以及表示"></a>算法以及表示</h1><h2 id="用传统流程图、N-S流程图（盒图）表示-算法"><a href="#用传统流程图、N-S流程图（盒图）表示-算法" class="headerlink" title="用传统流程图、N-S流程图（盒图）表示 算法"></a>用传统流程图、N-S流程图（盒图）表示 算法</h2><p>结构化算法：由三种基本结构组成的算法（顺序、选择、循环[当型&amp;直到型]）。</p><p>N-S流程图只能描述的是结构化算法，非结构化算法可以在保证功能不变的情况下转为结构化算法。</p><h2 id="用伪代码-设计-算法"><a href="#用伪代码-设计-算法" class="headerlink" title="用伪代码 设计 算法"></a>用伪代码 设计 算法</h2><h2 id="用计算机语言-实现-算法"><a href="#用计算机语言-实现-算法" class="headerlink" title="用计算机语言 实现 算法"></a>用计算机语言 实现 算法</h2><h2 id="结构化程序的设计"><a href="#结构化程序的设计" class="headerlink" title="结构化程序的设计"></a>结构化程序的设计</h2><ul><li>结构化程序<ul><li>模块1<ul><li>基本结构1</li><li>基本结构n</li></ul></li><li>模块n</li></ul></li></ul><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p><img src="file://D:/Li/PicturesForTypora/C%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B(%E6%98%9F%E5%8F%B7%E8%A1%A8%E7%A4%BAC99%E6%94%AF%E6%8C%81).jpg?lastModify=1586982887" alt="img"></p><p>C语言的数据类型含义：规定数据的<strong>存储单元长度</strong>（字节数）和<strong>存储形式</strong>。</p><h2 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h2><p>整型在不同编译系统的下存储单元的长度不同，有的是2B，有的是4B。</p><blockquote><p>C标准没有规定某种数据类型的具体所占存储单元长度，这由编译系统自行决定。C标准只规定了 <code>sizeof(short int) ≤ sizeof(int) ≤ sizeof(long int) ≤ sizeof(long long int)</code>。将代码进行迁移时需要特别注意不同系统规定的数据类型所占存储单元长度。</p></blockquote><p>整型在计算机中以<strong>二进制补码形式</strong>存储(最高位是符号位)，存在一个范围。当超出该范围时，会发生<strong>溢出</strong>。</p><p>根据需要，在类型名前加上<strong>修饰符`unsigned</strong>`可表示一个无符号数。</p><blockquote><ol><li>只有整型数据可以加修饰符<code>unsigned</code>，实型数据不行。</li><li>通过<strong><code>%u</code></strong>输出十进制的无符号数据。</li></ol></blockquote><h2 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h2><p>字符型也属于一种整型，可以理解成用一个字节表示的整型。</p><p>字符型可分别有符号和无符号的。</p><p><img src="file://D:/Li/PicturesForTypora/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E5%92%8C%E5%80%BC%E7%9A%84%E8%8C%83%E5%9B%B4.jpg?lastModify=1586982887" alt="img"></p><ul><li><p>与整型数据不同，在未指定修饰符<code>signed</code>或<code>unsigned</code>时，字符型数据按有无符号处理是由编译系统自己规定的。可以通过下面的代码进行测试：</p><p>  1</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char c &#x3D; 255;</span><br></pre></td></tr></table></figure><p>  2</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf(&quot;%d&quot;, c);  &#x2F;&#x2F; 若打印结果是-1 则说明编译系统默认字符数据是有符号的</span><br></pre></td></tr></table></figure></li><li><p>当编译系统默认c是有符号字符类型时，将产生<strong>溢出现象</strong>。具体解释如下：</p><p>  /* 上述代码现象的解释 */   假设编译系统默认字符是有符号的。 char c = 255; 这一步发生了两件事： 1)255以signed int类型保存(4字节的二进制补码形式，在这一标准下的机器码是<code>[00000000 00000000 00000000 11111111]补</code>，真值是+128) 2)赋值时，计算机以signed char类型保存变量，只取1)中的最低一个字节的二进制数。此时变量c在内存中的机器数是<code>[11111111]补</code>，真值是-1。</p></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>test</title>
-      <link href="/2020/04/16/test.html"/>
-      <url>/2020/04/16/test.html</url>
-      
-        <content type="html"><![CDATA[<h1 id="引用区块"><a href="#引用区块" class="headerlink" title="引用区块"></a>引用区块</h1><blockquote><p>Quick Start</p><footer><strong>luzhengli hello-world</strong><cite><a href="https://luzhengli.github.io/2020/04/10/hello-world/" target="_blank" rel="noopener">luzhengli.github.io/2020/04/10/hello-world</a></cite></footer></blockquote><p>另外一种引用方法：</p><blockquote><p>这也是引用</p><p>引用1</p><p>饮用2</p></blockquote><h1 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h1><figure class="highlight python"><figcaption><span>file.py</span><a href="https://luzhengli.github.io/2020/04/10/hello-world/" target="_blank" rel="noopener">hello-world</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">​&#96;&#96;&#96;[language] [title] [url] [link text]</span><br><span class="line">code snippet</span><br><span class="line">​</span><br></pre></td></tr></table></figure><pre><code></code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> Diary </category>
-          
-          <category> PlayStation </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> PS3 </tag>
-            
-            <tag> Games </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
   
   
 </search>
