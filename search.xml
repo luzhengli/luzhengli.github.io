@@ -29,6 +29,33 @@
     
     
     <entry>
+      <title>C语言位运算的用途</title>
+      <link href="/2020/04/27/C%E8%AF%AD%E8%A8%80%E6%9C%89%E5%85%B3%E4%BD%8D%E8%BF%90%E7%AE%97%E7%9A%84%E6%80%9D%E8%80%83.html"/>
+      <url>/2020/04/27/C%E8%AF%AD%E8%A8%80%E6%9C%89%E5%85%B3%E4%BD%8D%E8%BF%90%E7%AE%97%E7%9A%84%E6%80%9D%E8%80%83.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>最近复习C语言学到位运算，发现这个特性很灵活，绝不仅仅是简单的与或非语法而已，为加深印象还是决定记录下。位运算的不同运算符结合场景是具有一定含义的，本文分别介绍了按位与或非的基本语法，以及各自的使用场景。</p></blockquote><h1 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与(&amp;)"></a>按位与(&amp;)</h1><p>语法简记：有0得0，全1得1</p><p>使用场景：</p><ul><li>“屏蔽”信息位，具体来说包含两层：<ul><li>取特定位：当一个二进制位与0进行“与”时，就可以将其置0，从而屏蔽该信息。</li><li>取特定位：当一个二进制位与1进行“与”时，就可以“取”出该数。</li></ul></li></ul><p>综合两部分，可以用按位与运算符取出一个二进制串的特定位信息，并屏蔽特定位信息。<strong>屏蔽信息位值得单独强调，它有时可以实现掩饰（mask）的效果，比如<code>10011011 &amp; 00000111 = 00000011</code>，这有可能强调之后要操作二进制序列的最后三位（即保留这三位的信息），因此实现通过<code>&amp;</code>将前5位掩饰（mask）起来</strong>。</p><h1 id="或"><a href="#或" class="headerlink" title="或(|)"></a>或(|)</h1><p>语法简记：有1得1，全0得0</p><p>使用场景：</p><ul><li>置位：当一个二进制位与1进行“与”时，就可以将其置1。置位操作和常见，以前写C51时也常用，为I/O提供一个初始电平。</li></ul><h1 id="按位非"><a href="#按位非" class="headerlink" title="按位非(~)"></a>按位非(~)</h1><blockquote><p>这个比较特殊，按位非是一个单目运算，也因此很简单。</p></blockquote><p>语法简记：有1得0，有0得1</p><p>使用场景：</p><ul><li>一时只想到切换单片机的I/O口电气状态了，比如控制流水灯的亮灭等。</li></ul><h1 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或(^)"></a>按位异或(^)</h1><blockquote><p>这个运算符很强大，以前总觉得异或很奇怪，后来才知道大有用处。</p></blockquote><p>语法简记：相同为1，不同为0</p><p>语法的理解：判断两个位是否为“异”，如果是，则取<code>1</code>，否则取<code>0</code>。即不同为<code>1</code>，相同为<code>0</code>。</p><p><strong>异或运算的性质</strong>：</p><ul><li>异或满足交换律和结合律</li><li>x ^ x == 0</li><li>x ^ 0 == x</li><li>x ^ 1 == ~x</li></ul><p>异或运算的性质带来的更多有趣的应用场景：</p><ul><li><p>所有位置零：与自身异或</p></li><li><p>使特定位翻转（相当于实现了<code>~</code>的功能，但比<code>~</code>更灵活）：与1异或</p></li><li><p>使特定位保留原值：与0异或</p></li><li><p>交换两个值，不用临时变量：</p>  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = a^b;</span><br><span class="line">b = a^b;</span><br><span class="line">a = a^b;</span><br></pre></td></tr></table></figure><ul><li>优点：不用临时变量</li><li>缺点：速度没有使用临时变量快、当a、b引用的是一个同一个对象时，会使该变量为0。</li></ul></li></ul><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>[1] 《C语言程序设计（第四版）谭浩强著》</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程语言 </category>
+          
+          <category> C </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 位运算 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[视频]抓住人生的高尔夫球</title>
       <link href="/2020/04/20/%E8%A7%86%E9%A2%91-%E6%8A%93%E4%BD%8F%E4%BA%BA%E7%94%9F%E7%9A%84%E9%AB%98%E5%B0%94%E5%A4%AB%E7%90%83.html"/>
       <url>/2020/04/20/%E8%A7%86%E9%A2%91-%E6%8A%93%E4%BD%8F%E4%BA%BA%E7%94%9F%E7%9A%84%E9%AB%98%E5%B0%94%E5%A4%AB%E7%90%83.html</url>
@@ -74,9 +101,9 @@
       
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 坑 </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
       
