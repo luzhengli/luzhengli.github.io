@@ -127,18 +127,6 @@
             </li>
           
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                <i class="iconfont icon-link-fill"></i>
-                友链
-              </a>
-            </li>
-          
-        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
@@ -219,22 +207,26 @@
               <blockquote>
 <p>最近复习C语言学到位运算，发现这个特性很灵活，绝不仅仅是简单的与或非语法而已，为加深印象还是决定记录下。位运算的不同运算符结合场景是具有一定含义的，本文分别介绍了按位与或非的基本语法，以及各自的使用场景。</p>
 </blockquote>
-<h1 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与(&amp;)"></a>按位与(&amp;)</h1><p>语法简记：有0得0，全1得1</p>
+<h1 id="按位与"><a class="markdownIt-Anchor" href="#按位与"></a> 按位与(&amp;)</h1>
+<p>语法简记：有0得0，全1得1</p>
 <p>使用场景：</p>
 <ul>
-<li>“屏蔽”信息位，具体来说包含两层：<ul>
+<li>“屏蔽”信息位，具体来说包含两层：
+<ul>
 <li>取特定位：当一个二进制位与0进行“与”时，就可以将其置0，从而屏蔽该信息。</li>
 <li>取特定位：当一个二进制位与1进行“与”时，就可以“取”出该数。</li>
 </ul>
 </li>
 </ul>
 <p>综合两部分，可以用按位与运算符取出一个二进制串的特定位信息，并屏蔽特定位信息。<strong>屏蔽信息位值得单独强调，它有时可以实现掩饰（mask）的效果，比如<code>10011011 &amp; 00000111 = 00000011</code>，这有可能强调之后要操作二进制序列的最后三位（即保留这三位的信息），因此实现通过<code>&amp;</code>将前5位掩饰（mask）起来</strong>。</p>
-<h1 id="或"><a href="#或" class="headerlink" title="或(|)"></a>或(|)</h1><p>语法简记：有1得1，全0得0</p>
+<h1 id="或"><a class="markdownIt-Anchor" href="#或"></a> 或(|)</h1>
+<p>语法简记：有1得1，全0得0</p>
 <p>使用场景：</p>
 <ul>
 <li>置位：当一个二进制位与1进行“与”时，就可以将其置1。置位操作和常见，以前写C51时也常用，为I/O提供一个初始电平。</li>
 </ul>
-<h1 id="按位非"><a href="#按位非" class="headerlink" title="按位非(~)"></a>按位非(~)</h1><blockquote>
+<h1 id="按位非~"><a class="markdownIt-Anchor" href="#按位非~"></a> 按位非(~)</h1>
+<blockquote>
 <p>这个比较特殊，按位非是一个单目运算，也因此很简单。</p>
 </blockquote>
 <p>语法简记：有1得0，有0得1</p>
@@ -242,7 +234,8 @@
 <ul>
 <li>一时只想到切换单片机的I/O口电气状态了，比如控制流水灯的亮灭等。</li>
 </ul>
-<h1 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或(^)"></a>按位异或(^)</h1><blockquote>
+<h1 id="按位异或"><a class="markdownIt-Anchor" href="#按位异或"></a> 按位异或(^)</h1>
+<blockquote>
 <p>这个运算符很强大，以前总觉得异或很奇怪，后来才知道大有用处。</p>
 </blockquote>
 <p>语法简记：相同为1，不同为0</p>
@@ -256,24 +249,28 @@
 </ul>
 <p>异或运算的性质带来的更多有趣的应用场景：</p>
 <ul>
-<li><p>所有位置零：与自身异或</p>
+<li>
+<p>所有位置零：与自身异或</p>
 </li>
-<li><p>使特定位翻转（相当于实现了<code>~</code>的功能，但比<code>~</code>更灵活）：与1异或</p>
+<li>
+<p>使特定位翻转（相当于实现了<code>~</code>的功能，但比<code>~</code>更灵活）：与1异或</p>
 </li>
-<li><p>使特定位保留原值：与0异或</p>
+<li>
+<p>使特定位保留原值：与0异或</p>
 </li>
-<li><p>交换两个值，不用临时变量：</p>
+<li>
+<p>交换两个值，不用临时变量：</p>
   <pre><code class="hljs c">a = a^b;
 b = a^b;
 a = a^b;</code></pre>
-
 <ul>
 <li>优点：不用临时变量</li>
 <li>缺点：速度没有使用临时变量快、当a、b引用的是一个同一个对象时，会使该变量为0。</li>
 </ul>
 </li>
 </ul>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>[1] 《C语言程序设计（第四版）谭浩强著》</p>
+<h1 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h1>
+<p>[1] 《C语言程序设计（第四版）谭浩强著》</p>
 
             </article>
             <hr>
@@ -327,6 +324,31 @@ a = a^b;</code></pre>
               
             </div>
 
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    function loadUtterances() {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.defer = false
+      s.setAttribute('repo', 'luzhengli/blog-commit');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', 'github-light');
+      s.setAttribute('crossorigin', 'anonymous');
+      var e = document.getElementsByTagName('script')[0];
+      e.parentNode.insertBefore(s, e);
+    }
+    createObserver(loadUtterances, 'comments')
+  </script>
+
+
+              </div>
             
           </div>
         </div>
@@ -393,30 +415,6 @@ a = a^b;</code></pre>
         <span>Fluid</span></a>
     </div>
     
-  <div class="statistics">
-    
-    
-    
-    
-      
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            总访问量 
-            <span id="busuanzi_value_site_pv"></span>
-             次
-          </span>
-      
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            总访客数 
-            <span id="busuanzi_value_site_uv"></span>
-             人
-          </span>
-      
-    
-  </div>
-
 
     
 
@@ -443,8 +441,6 @@ a = a^b;</code></pre>
   <script  src="/js/clipboard-use.js" ></script>
 
 
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
@@ -554,6 +550,30 @@ a = a^b;</code></pre>
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?bb1726ecbd2adb17fc76b8413af33852";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
