@@ -1,294 +1,526 @@
 <!DOCTYPE html>
-<html lang=zh-CN,en,default>  <!-- config.language.substring(0, 2) -->
+<html lang="zh-CN,en,default">
+
+
+
+
+
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="这是coy的个人博客，分享知识与生活。目前博客还在初创阶段，早期文章可见知乎专栏。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="coy&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="coy&#39;s Blog">
-<meta property="og:description" content="这是coy的个人博客，分享知识与生活。目前博客还在初创阶段，早期文章可见知乎专栏。">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="luyao">
-<meta property="article:tag" content="blog">
-<meta property="article:tag" content="coy">
-<meta property="article:tag" content="博客">
-<meta name="twitter:card" content="summary">
-    
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
-        
-    
-    <!-- title -->
-    <title>coy&#39;s Blog</title>
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是coy的个人博客，分享知识与生活。目前博客还在初创阶段，早期文章可见知乎专栏。">
+  <meta name="author" content="luyao">
+  <meta name="keywords" content="blog,coy,博客">
+  <title>coy&#39;s Blog</title>
 
-    <!-- persian styles -->
-    
-      
-<link rel="stylesheet" href="/css/rtl.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
-    
-    <!-- rss -->
-    
-    
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-    <div class="content index py4">
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <header id="header">
-  <a href="/">
-  
-    
-      <div id="logo" style="background-image: url(/images/logo.png);"></div>
-    
-  
-    <div id="title">
-      <h1>coy&#39;s Blog</h1>
-    </div>
-  </a>
-  <div id="nav">
-    <ul>
-      <li class="icon">
-        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
-      </li>
-       
-        <li><a href="/">首页</a></li>
-       
-        <li><a href="/tags/">标签</a></li>
-       
-        <li><a href="/categories/">分类</a></li>
-       
-        <li><a href="/archives/">归档</a></li>
-       
-        <li><a href="/about/">关于</a></li>
-       
-        <li><a href="/search/">搜索</a></li>
-      
-    </ul>
-  </div>
-</header>
-
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-        <section id="about">
-  
-    <p>这是coy的个人博客，分享知识与生活。目前博客还在初创阶段，早期文章可见知乎专栏。</p>
-
-  
-  
-    <p>
-      在这里找到我：
-      
-      
-      
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
-          <a class="icon" target="_blank" rel="noopener" href="https://github.com/luzhengli">
-            <i class="fab fa-github"></i><!--
-      ---></a><!--
-    ---><!--
-    --->  
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
-      
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
-          <a class="icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/luzhengli">
-            <i class="fab fa-zhihu"></i><!--
-      ---></a><!--
-    ---><!--
-    --->   
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
         
-      
         
-          <a class="icon" target="_blank" rel="noopener" href="mailto:luzheng.li@outlook.com">
-            <i class="fas fa-envelope"></i><!--
-      ---></a><!--
-      ---><!--
-    --->.
-        
-      
-    </p>
-  
-</section>
-
-<section id="writing">
-  <span class="h1"><a href="/archives">文章</a></span>
-  
-  <span class="h2">标签</span>
-  <span class="widget tagcloud">
-    <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E5%93%B2%E5%AD%A6/" style="font-size: 10px;">哲学</a> <a href="/tags/%E5%9D%91/" style="font-size: 10px;">坑</a> <a href="/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/" style="font-size: 10px;">时间管理</a> <a href="/tags/%E7%AC%AC%E4%B8%80%E6%AC%A1/" style="font-size: 10px;">第一次</a>
-  </span>
-  <span class="h2">最新的文章</span>
-  
-  <ul class="post-list">
-    
-    
-      
-    
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-05-03T10:08:58.000Z" itemprop="datePublished">2020-05-03</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/05/03/%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%AC%AC%E4%B8%80%E6%94%AF%E9%92%A2%E7%90%B4%E6%9B%B2.html">[视频]学会的第一支钢琴曲</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-04-27T09:50:45.000Z" itemprop="datePublished">2020-04-27</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/04/27/C%E8%AF%AD%E8%A8%80%E6%9C%89%E5%85%B3%E4%BD%8D%E8%BF%90%E7%AE%97%E7%9A%84%E6%80%9D%E8%80%83.html">C语言位运算的用途</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-04-19T16:10:27.000Z" itemprop="datePublished">2020-04-20</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/04/20/%E8%A7%86%E9%A2%91-%E6%8A%93%E4%BD%8F%E4%BA%BA%E7%94%9F%E7%9A%84%E9%AB%98%E5%B0%94%E5%A4%AB%E7%90%83.html">[视频]抓住人生的高尔夫球</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-04-16T09:25:01.000Z" itemprop="datePublished">2020-04-16</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/04/16/%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0.html">使用hexo新建、编辑并预览文章</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
-  
-</section>
-
-
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2020
-    luyao
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/tags/">标签</a></li>
-         
-          <li><a href="/categories/">分类</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/search/">搜索</a></li>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
         
       </ul>
-    </nav>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/05/03/%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%AC%AC%E4%B8%80%E6%94%AF%E9%92%A2%E7%90%B4%E6%9B%B2.html">[视频]学会的第一支钢琴曲</a>
+
+      <a href="/2020/05/03/%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%AC%AC%E4%B8%80%E6%94%AF%E9%92%A2%E7%90%B4%E6%9B%B2.html" class="index-excerpt">
+        
+        
+          
+        
+        <div>
+ 虽然看起来很简单，但刚上手的时候那真叫个手忙脚乱hh
+ ps：噪声感人/(ㄒoㄒ)/~~
+
+
+
+
+
+</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-03
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%92%A2%E7%90%B4/">钢琴</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AC%AC%E4%B8%80%E6%AC%A1/">第一次</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/04/27/C%E8%AF%AD%E8%A8%80%E6%9C%89%E5%85%B3%E4%BD%8D%E8%BF%90%E7%AE%97%E7%9A%84%E6%80%9D%E8%80%83.html">C语言位运算的用途</a>
+
+      <a href="/2020/04/27/C%E8%AF%AD%E8%A8%80%E6%9C%89%E5%85%B3%E4%BD%8D%E8%BF%90%E7%AE%97%E7%9A%84%E6%80%9D%E8%80%83.html" class="index-excerpt">
+        
+        
+          
+        
+        <div>
+最近复习C语言学到位运算，发现这个特性很灵活，绝不仅仅是简单的与或非语法而已，为加深印象还是决定记录下。位运算的不同运算符结合场景是具有一定含义的，本文分别介绍了按位与或非的基本语法，以及各自的使用场景。
+
+按位与(&amp;)语法简记：有0得0，全1得1
+使用场景：
+
+“屏蔽”信息位，具体来说包含两层：
+取特定位：当一个二进制位与0进行“与”时，就可以将其置0，从而屏蔽该信息。
+取特定位：当一</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-27
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/04/20/%E8%A7%86%E9%A2%91-%E6%8A%93%E4%BD%8F%E4%BA%BA%E7%94%9F%E7%9A%84%E9%AB%98%E5%B0%94%E5%A4%AB%E7%90%83.html">[视频]抓住人生的高尔夫球</a>
+
+      <a href="/2020/04/20/%E8%A7%86%E9%A2%91-%E6%8A%93%E4%BD%8F%E4%BA%BA%E7%94%9F%E7%9A%84%E9%AB%98%E5%B0%94%E5%A4%AB%E7%90%83.html" class="index-excerpt">
+        
+        
+          
+        
+        <div>值得反复观看和思考：
+
+
+
+
+</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-20
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BA%BA%E7%94%9F/">人生</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%93%B2%E5%AD%A6/">哲学</a>
+            
+              <a href="/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/">时间管理</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/04/16/%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0.html">使用hexo新建、编辑并预览文章</a>
+
+      <a href="/2020/04/16/%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0.html" class="index-excerpt">
+        
+        
+          
+        
+        <div>阅读本文之前，你应当已经搭建并部署好了hexo博客，如果没有我推荐一个实战视频：https://www.bilibili.com/video/BV1Yb411a7ty
+本文将介绍如何在hexo博客中创建、编辑、预览文章，以及如何自定义主题。最后还记录了一些个人部署博客时遇到的坑。
+新建文章文章
+命令：hexo new [layout] title或 hexo n [layout] title
+
+创</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-16
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/blog/">blog</a>
+            
+              <a href="/categories/blog/hexo/">hexo</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9D%91/">坑</a>
+            
+              <a href="/tags/hexo/">hexo</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
   </div>
 </footer>
 
-    </div>
-    <!-- styles -->
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
-
-
-    <!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
+<!-- Plugins -->
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
-<!-- clipboard -->
 
 
-<script src="/js/main.js"></script>
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
-<!-- search -->
 
-<!-- Google Analytics -->
 
-<!-- Baidu Analytics -->
 
-<!-- Disqus Comments -->
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?bb1726ecbd2adb17fc76b8413af33852";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
 
 
 </body>

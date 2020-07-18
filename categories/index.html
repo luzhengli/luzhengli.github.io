@@ -1,199 +1,538 @@
 <!DOCTYPE html>
-<html lang=zh-CN,en,default>  <!-- config.language.substring(0, 2) -->
+<html lang="zh-CN,en,default">
+
+
+
+
+
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="这是coy的个人博客，分享知识与生活。目前博客还在初创阶段，早期文章可见知乎专栏。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
-<meta property="og:site_name" content="coy&#39;s Blog">
-<meta property="og:description" content="这是coy的个人博客，分享知识与生活。目前博客还在初创阶段，早期文章可见知乎专栏。">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-16T06:30:23.000Z">
-<meta property="article:modified_time" content="2020-04-16T06:31:42.180Z">
-<meta property="article:author" content="luyao">
-<meta property="article:tag" content="blog">
-<meta property="article:tag" content="coy">
-<meta property="article:tag" content="博客">
-<meta name="twitter:card" content="summary">
-    
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
-        
-    
-    <!-- title -->
-    <title>categories</title>
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是coy的个人博客，分享知识与生活。目前博客还在初创阶段，早期文章可见知乎专栏。">
+  <meta name="author" content="luyao">
+  <meta name="keywords" content="blog,coy,博客">
+  <title>分类 - coy&#39;s Blog</title>
 
-    <!-- persian styles -->
-    
-      
-<link rel="stylesheet" href="/css/rtl.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
-    
-    <!-- rss -->
-    
-    
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-    <div class="content index py4">
-        
-          <header id="header">
-  <a href="/">
-  
-    
-      <div id="logo" style="background-image: url(/images/logo.png);"></div>
-    
-  
-    <div id="title">
-      <h1>coy&#39;s Blog</h1>
-    </div>
-  </a>
-  <div id="nav">
-    <ul>
-      <li class="icon">
-        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
-      </li>
-       
-        <li><a href="/">首页</a></li>
-       
-        <li><a href="/tags/">标签</a></li>
-       
-        <li><a href="/categories/">分类</a></li>
-       
-        <li><a href="/archives/">归档</a></li>
-       
-        <li><a href="/about/">关于</a></li>
-       
-        <li><a href="/search/">搜索</a></li>
-      
-    </ul>
-  </div>
-</header>
 
-        
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
-  <div class="content" itemprop="articleBody">
-      
-          <div id="categories">
-            <div class="category-list-title">
-                
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                
-            </div>
-            <div class="category-list">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/hexo/">hexo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E7%94%9F/">人生</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%92%A2%E7%90%B4/">钢琴</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
-        
-  </div>
-</article>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2020
-    luyao
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/tags/">标签</a></li>
-         
-          <li><a href="/categories/">分类</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/search/">搜索</a></li>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
         
       </ul>
-    </nav>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+
+
+
+
+
+<div class="category-list">
+  
+  
+  
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item  list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckcrvzxm40016l863bmpi3qxl" role="tab" data-toggle="collapse" href="#collapse-ckcrvzxm40016l863bmpi3qxl"
+        aria-expanded="true"
+      >
+        编程语言
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckcrvzxm40016l863bmpi3qxl" class="collapse in show" role="tabpanel"
+       aria-labelledby="heading-ckcrvzxm40016l863bmpi3qxl">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckcrvzxme0023l863hyfg1650" role="tab" data-toggle="collapse" href="#collapse-ckcrvzxme0023l863hyfg1650"
+        aria-expanded="false"
+      >
+        C
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckcrvzxme0023l863hyfg1650" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckcrvzxme0023l863hyfg1650">
+    
+    
+    
+      
+      
+        <a href="/2020/04/27/C%E8%AF%AD%E8%A8%80%E6%9C%89%E5%85%B3%E4%BD%8D%E8%BF%90%E7%AE%97%E7%9A%84%E6%80%9D%E8%80%83.html" class="list-group-item list-group-item-action">
+          <span class="category-post">C语言位运算的用途</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item  list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckcrvzxm5001al8630jyc9bm7" role="tab" data-toggle="collapse" href="#collapse-ckcrvzxm5001al8630jyc9bm7"
+        aria-expanded="true"
+      >
+        blog
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/blog/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckcrvzxm5001al8630jyc9bm7" class="collapse in show" role="tabpanel"
+       aria-labelledby="heading-ckcrvzxm5001al8630jyc9bm7">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckcrvzxme0026l8638hdu2tl0" role="tab" data-toggle="collapse" href="#collapse-ckcrvzxme0026l8638hdu2tl0"
+        aria-expanded="false"
+      >
+        hexo
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/blog/hexo/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckcrvzxme0026l8638hdu2tl0" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckcrvzxme0026l8638hdu2tl0">
+    
+    
+    
+      
+      
+        <a href="/2020/04/16/%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0.html" class="list-group-item list-group-item-action">
+          <span class="category-post">使用hexo新建、编辑并预览文章</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckcrvzxma001kl86326c8gq79" role="tab" data-toggle="collapse" href="#collapse-ckcrvzxma001kl86326c8gq79"
+        aria-expanded="false"
+      >
+        钢琴
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E9%92%A2%E7%90%B4/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckcrvzxma001kl86326c8gq79" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckcrvzxma001kl86326c8gq79">
+    
+    
+    
+      
+      
+        <a href="/2020/05/03/%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%AC%AC%E4%B8%80%E6%94%AF%E9%92%A2%E7%90%B4%E6%9B%B2.html" class="list-group-item list-group-item-action">
+          <span class="category-post">[视频]学会的第一支钢琴曲</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckcrvzxmb001ql86301k7c3d6" role="tab" data-toggle="collapse" href="#collapse-ckcrvzxmb001ql86301k7c3d6"
+        aria-expanded="false"
+      >
+        人生
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E4%BA%BA%E7%94%9F/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckcrvzxmb001ql86301k7c3d6" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckcrvzxmb001ql86301k7c3d6">
+    
+    
+    
+      
+      
+        <a href="/2020/04/20/%E8%A7%86%E9%A2%91-%E6%8A%93%E4%BD%8F%E4%BA%BA%E7%94%9F%E7%9A%84%E9%AB%98%E5%B0%94%E5%A4%AB%E7%90%83.html" class="list-group-item list-group-item-action">
+          <span class="category-post">[视频]抓住人生的高尔夫球</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
   </div>
 </footer>
 
-    </div>
-    <!-- styles -->
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
-
-
-    <!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
+<!-- Plugins -->
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
-<!-- clipboard -->
 
 
-<script src="/js/main.js"></script>
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
-<!-- search -->
 
-<!-- Google Analytics -->
 
-<!-- Baidu Analytics -->
 
-<!-- Disqus Comments -->
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "分类&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?bb1726ecbd2adb17fc76b8413af33852";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
 
 
 </body>
