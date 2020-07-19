@@ -30,6 +30,8 @@
   
 
   
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -341,21 +343,29 @@ a = a^b;</code></pre>
               <div class="comments" id="comments">
                 
                 
-<script type="text/javascript">
-  function loadUtterances() {
-    var s = document.createElement('script');
-    s.setAttribute('src', 'https://utteranc.es/client.js');
-    s.setAttribute('repo', 'luzhengli/comments');
-    s.setAttribute('issue-term', 'pathname');
-      
-      s.setAttribute('label', 'utterances');
-      
-      s.setAttribute('theme', 'github-light');
-    s.setAttribute('crossorigin', 'anonymous');
-    document.getElementById('comments').appendChild(s);
-  }
-  waitElementVisible('comments', loadUtterances)
-</script>
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    function loadGitalk(){
+      addScript('https://cdn.staticfile.org/gitalk/1.6.2/gitalk.min.js', function () {
+        var gitalk = new Gitalk({
+          clientID: '4678bd937f50ed25698c',
+          clientSecret: 'ddd0410479ebfa4b21db9501140ffbcaacc62379',
+          repo: 'luzhengli/comments',
+          owner: 'luzhengli',
+          admin: 'luzhengli',
+          id: 'abe2f11339bee105f3f102052ebaa0c7',
+          language: 'zh-CN',
+          perPage: 15,
+          pagerDirection: 'last',
+          createIssueManually: 'true',
+          distractionFreeMode: 'false'
+        });
+        gitalk.render('gitalk-container');
+      });
+    }
+    createObserver(loadGitalk, 'gitalk-container');
+  </script>
+
 
               </div>
             
