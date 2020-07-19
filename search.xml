@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>为hexo博客的fluid主题添加gitalk评论系统</title>
+      <link href="/2020/07/20/%E4%B8%BAhexo%E5%8D%9A%E5%AE%A2%E7%9A%84fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F.html"/>
+      <url>/2020/07/20/%E4%B8%BAhexo%E5%8D%9A%E5%AE%A2%E7%9A%84fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F.html</url>
+      
+        <content type="html"><![CDATA[<p>本文将详细介绍（图文）如何在hexo博客的fluid主题下添加gitalk系统。</p><p>gitalk是基于github issue的评论系统，详细的介绍可见<a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md" target="_blank" rel="noopener">这里</a>。</p><h1 id="github端的准备"><a class="markdownIt-Anchor" href="#github端的准备"></a> github端的准备</h1><p>主要流程：</p><ol><li>注册GitHub账号</li><li>创建Github仓库，用于保存博客评论</li><li>添加OAuth App，为网站添加第三方（这里是GitHub）登录认证功能</li></ol><p>第1、2步都十分简单，不太清楚的朋友可以自行查阅资料。下面主要详细介绍添加OAuth App的过程：</p><p>首先点击个人头像，进入<code>Settings</code>选项卡</p><p><img src="%E4%B8%BAhexo%E5%8D%9A%E5%AE%A2%E7%9A%84fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200720011753172.png" srcset="/img/loading.gif" alt="image-20200720011753172" /></p><p>选择<code>OAuth Apps</code>，点击<code>New OAuth App</code></p><p><img src="%E4%B8%BAhexo%E5%8D%9A%E5%AE%A2%E7%9A%84fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200720012013813.png" srcset="/img/loading.gif" alt="image-20200720012013813" /></p><p>然后按照下方提示填写内容，新建一个OAuth App</p><p><img src="%E4%B8%BAhexo%E5%8D%9A%E5%AE%A2%E7%9A%84fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200720012524757.png" srcset="/img/loading.gif" alt="image-20200720012524757" /></p><p>上述都完成后，可以在<code>OAuth Apps</code>选项卡看到你创建好的app</p><p><img src="%E4%B8%BAhexo%E5%8D%9A%E5%AE%A2%E7%9A%84fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200720012629552.png" srcset="/img/loading.gif" alt="image-20200720012629552" /></p><p>点击进入app后记录下Client ID和Client Secret，这两个字符串在下一部分修改主题的配置文件时会使用到</p><p><img src="%E4%B8%BAhexo%E5%8D%9A%E5%AE%A2%E7%9A%84fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200720013717628.png" srcset="/img/loading.gif" alt="image-20200720013717628" /></p><h1 id="hexo端的准备"><a class="markdownIt-Anchor" href="#hexo端的准备"></a> hexo端的准备</h1><p>对于fluid主题，只需要修改一下主题的配置文件<code>_config.yml</code>即可。</p><p>修改有关评论的所有项（注释部分介绍了含义）：</p><pre><code class="hljs yml"><span class="hljs-attr">comments:</span>  <span class="hljs-comment"># 评论</span>    <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span>  <span class="hljs-comment"># 开启评论</span>    <span class="hljs-attr">type:</span> <span class="hljs-string">gitalk</span>  <span class="hljs-comment"># 指定使用的评论模块，我们使用的是gitalk系统，所以填gitalk</span><span class="hljs-comment"># Gitalk</span><span class="hljs-comment"># You can get yout ClientID and ClientSecret from https://github.com/settings/applications/new</span><span class="hljs-comment"># More info available at https://github.com/gitalk/gitalk#options</span><span class="hljs-attr">gitalk:</span>  <span class="hljs-attr">clientID:</span> <span class="hljs-string">xxx</span>  <span class="hljs-comment"># GitHub Application Client ID，从OAuth APP中复制过来</span>  <span class="hljs-attr">clientSecret:</span> <span class="hljs-string">xxx</span>  <span class="hljs-comment"># GitHub Application Client Secret,从OAuth APP中复制过来</span>  <span class="hljs-attr">repo:</span> <span class="hljs-string">comments</span>  <span class="hljs-comment"># 你保存评论的仓库名（这里是我的仓库，请改成你自己的），请注意，它不是你的仓库完整路径，不包含你的GitHub用户名</span>  <span class="hljs-attr">owner:</span> <span class="hljs-string">'luzhengli'</span>  <span class="hljs-comment"># 你的GitHub用户名，注意外面用单引号包围起来！</span>  <span class="hljs-attr">admin:</span> <span class="hljs-string">['luzhengli']</span>  <span class="hljs-comment"># GitHub repo owner and collaborators, only these guys can initialize github issues, should be like "['admin']" or "['admin1','admin2']" 我这里设置成仅我个人能提交issue（即仅个人能初始化评论区）</span>  <span class="hljs-attr">id:</span> <span class="hljs-string">location.pathname</span>         <span class="hljs-comment"># The unique id of the page. Length must less than 50. 这个不用改</span>  <span class="hljs-attr">language:</span> <span class="hljs-string">zh-CN</span>               <span class="hljs-comment"># Localization language key, en, zh-CN and zh-TW are currently available. 中文网站也不用改</span>  <span class="hljs-attr">labels:</span> <span class="hljs-string">"['Gitalk']"</span>          <span class="hljs-comment"># GitHub issue labels. 一般不用改</span>  <span class="hljs-attr">perPage:</span> <span class="hljs-number">15</span>                   <span class="hljs-comment"># Pagination size, with maximum 100.</span>  <span class="hljs-attr">pagerDirection:</span> <span class="hljs-string">last</span>          <span class="hljs-comment"># Comment sorting direction, available values are last and first. 默认即可</span>  <span class="hljs-attr">distractionFreeMode:</span> <span class="hljs-literal">false</span>    <span class="hljs-comment"># Facebook-like distraction free mode. 默认即可</span>  <span class="hljs-attr">createIssueManually:</span> <span class="hljs-literal">true</span>     <span class="hljs-comment"># By default, Gitalk will create a corresponding github issue for your every single page automatically when the logined user is belong to the admin users. You can create it manually by setting this option to true. 默认即可</span></code></pre><p>最后，使用hexo的命令更新静态文件，然后重新部署网站，如果前面都没有问题，那么评论系统就已经搭建完毕了。</p><p>如果在<code>_config.yml</code>配置文件中设置了<code>admin</code>为自己，那么博客中每个文章页都需要你自己手动初始化评论区（对应于GitHub中提交一个issue），在这一点上，gitalk显得十分麻烦。不过不用担心，下一篇文章将介绍如何自动化初始化gitalk评论。</p><p><img src="%E4%B8%BAhexo%E5%8D%9A%E5%AE%A2%E7%9A%84fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200720014647865.png" srcset="/img/loading.gif" alt="image-20200720014647865" /></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> blog </category>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gitalk </tag>
+            
+            <tag> hexo </tag>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[视频]学会的第一支钢琴曲</title>
       <link href="/2020/05/03/%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%AC%AC%E4%B8%80%E6%94%AF%E9%92%A2%E7%90%B4%E6%9B%B2.html"/>
       <url>/2020/05/03/%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%AC%AC%E4%B8%80%E6%94%AF%E9%92%A2%E7%90%B4%E6%9B%B2.html</url>
