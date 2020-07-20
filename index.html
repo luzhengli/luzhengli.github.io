@@ -415,9 +415,9 @@ ps：噪声感人/(ㄒoㄒ)/~~
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/hexo/">hexo</a>
-            
               <a href="/tags/%E5%9D%91/">坑</a>
+            
+              <a href="/tags/hexo/">hexo</a>
             
           </div>
         
@@ -479,13 +479,14 @@ ps：噪声感人/(ㄒoㄒ)/~~
       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
         <span>Fluid</span></a>
     </div>
-    <div>
+
+    <div>  <!-- 统计网站运行时间 -->
       <span id="timeDate">载入天数...</span>
       <span id="times">载入时分秒...</span>
       <script>
         var now = new Date();
         function createtime() {
-          var grt = new Date("02/14/2017 00:00:00");//此处修改你的建站时间或者网站上线时间
+          var grt = new Date("04/10/2020 00:06:25");//此处修改你的建站时间或者网站上线时间
           now.setTime(now.getTime() + 250);
           days = (now - grt) / 1000 / 60 / 60 / 24;
           dnum = Math.floor(days);
@@ -510,6 +511,7 @@ ps：噪声感人/(ㄒoㄒ)/~~
         setInterval("createtime()", 250);
       </script>
     </div>
+    
     
   <div class="statistics">
     
