@@ -277,26 +277,25 @@
             </div>
 
             
-              <!-- Comments -->
-              <div class="comments" id="comments">
-                
-                
-<script type="text/javascript">
-  function loadUtterances() {
-    var s = document.createElement('script');
-    s.setAttribute('src', 'https://utteranc.es/client.js');
-    s.setAttribute('repo', 'luzhengli/commit-utterance');
-    s.setAttribute('issue-term', 'pathname');
-      
-      s.setAttribute('theme', 'github-light');
-    s.setAttribute('crossorigin', 'anonymous');
-    document.getElementById('comments').appendChild(s);
-  }
-  waitElementVisible('comments', loadUtterances)
-</script>
-
-
+              <!-- 《utteranc评论：基于github issue的评论系统 -->
+              <div>
+                <section id="comments" class="comments">
+                  <style>
+                    .utterances {
+                      max-width: 100%;
+                    }
+                  </style>
+                  <script src="https://utteranc.es/client.js" 
+                          repo="luzhengli/commit-utterance" 
+                          issue-term="title" 
+                          label="utterance"
+                          theme="github-light" 
+                          crossorigin="anonymous" 
+                          async>
+                  </script>
+                </section>
               </div>
+              <!-- utteranc评论》 -->
             
           </div>
         </div>
