@@ -221,8 +221,7 @@
               <p>本文从数据操作的导向角度总结了Pandas的一些常见用法，提供场景的同时也提供了部分实例。主要是想给自己做一个参考，以便忘记后查询。</p>
 <p>本文将会持续更新。</p>
 <h1 id="series对象包含索引的数组"><a class="markdownIt-Anchor" href="#series对象包含索引的数组"></a> Series对象：包含索引的数组</h1>
-<ul>
-<li>Series是由索引和数组两部分构成的
+<p>Series是由索引和数组两部分构成的</p>
 <ul>
 <li>索引（这里的索引不仅限于数值型、还支持字符串）
 <ul>
@@ -237,8 +236,7 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><strong>常用属性</strong>
+<h2 id="常用属性"><a class="markdownIt-Anchor" href="#常用属性"></a> <strong>常用属性</strong></h2>
 <ul>
 <li>index：返回Series对象的索引</li>
 <li>values：返回Series对象的数组对象</li>
@@ -248,8 +246,7 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><strong>常用操作及对应方法</strong>
+<h2 id="常用操作及对应方法"><a class="markdownIt-Anchor" href="#常用操作及对应方法"></a> <strong>常用操作及对应方法</strong></h2>
 <ul>
 <li>创建Series
 <ul>
@@ -366,8 +363,7 @@
 </ul>
 </li>
 </ul>
-</li>
-<li>类似numpy.array和dict的行为
+<h2 id="类似numpyarray和dict的行为"><a class="markdownIt-Anchor" href="#类似numpyarray和dict的行为"></a> 类似numpy.array和dict的行为</h2>
 <ul>
 <li>Seires具有类似numpy.array的行为
 <ul>
@@ -384,12 +380,9 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 <h1 id="dataframe对象"><a class="markdownIt-Anchor" href="#dataframe对象"></a> Dataframe对象</h1>
-<ul>
-<li>Dataframe包含<strong>index（行标签）</strong>、**columns（列标签）**以及数据三部分。</li>
-<li>常用属性
+<p>Dataframe包含<strong>index（行标签）</strong>、**columns（列标签）**以及数据三部分。</p>
+<h2 id="常用属性-2"><a class="markdownIt-Anchor" href="#常用属性-2"></a> 常用属性</h2>
 <ul>
 <li><strong>values</strong>：返回Dataframe对象的数据（以array形式）</li>
 <li>dtype<strong>s</strong>：返回每列数据的数据类型
@@ -399,8 +392,7 @@
 </li>
 <li>T：返回Dataframe对象的转置</li>
 </ul>
-</li>
-<li>常用操作及对应方法
+<h2 id="常用操作及对应方法-2"><a class="markdownIt-Anchor" href="#常用操作及对应方法-2"></a> 常用操作及对应方法</h2>
 <ul>
 <li><strong>创建Dataframe</strong>
 <ul>
@@ -687,18 +679,13 @@
 </ul>
 </li>
 </ul>
-</li>
-<li>时间序列</li>
-</ul>
+<h2 id="时间序列"><a class="markdownIt-Anchor" href="#时间序列"></a> 时间序列</h2>
 <h1 id="文件读写"><a class="markdownIt-Anchor" href="#文件读写"></a> 文件读写</h1>
 <h1 id="算数运算"><a class="markdownIt-Anchor" href="#算数运算"></a> 算数运算</h1>
-<ul>
-<li>
-<p>常用运算符及对应函数</p>
+<h2 id="常用运算符及对应函数"><a class="markdownIt-Anchor" href="#常用运算符及对应函数"></a> 常用运算符及对应函数</h2>
 <p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/fc8a8217-ef8a-4db2-b6cd-50ce6fccab65-2137757.jpg" srcset="/img/loading.gif" alt="img" /></p>
-</li>
-<li>
-<p><strong>标签/数据对齐特性</strong>：通过对齐不同对象的行/列标签实现算数（加或减）运算（自动对标签相同的数据进行运算，标签没有匹配的取并集，且值取NaN）</p>
+<h2 id="标签数据对齐特性"><a class="markdownIt-Anchor" href="#标签数据对齐特性"></a> <strong>标签/数据对齐特性</strong></h2>
+<p>通过对齐不同对象的行/列标签实现算数（加或减）运算（自动对标签相同的数据进行运算，标签没有匹配的取并集，且值取NaN）</p>
 <ul>
 <li>
 <p>实例1：两Series相加</p>
@@ -731,9 +718,7 @@
 </ul>
 </li>
 </ul>
-</li>
-<li>
-<p><strong>广播特性</strong></p>
+<h2 id="广播特性"><a class="markdownIt-Anchor" href="#广播特性"></a> <strong>广播特性</strong></h2>
 <ul>
 <li>
 <p>numpy中的广播：当一个二维数组减去它的第A行数据时，这个二维数组的每行数据会依次减去第A行数据。</p>
@@ -762,15 +747,10 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 <h1 id="函数"><a class="markdownIt-Anchor" href="#函数"></a> 函数</h1>
-<ul>
-<li>
-<p>应用内置函数</p>
-</li>
-<li>
-<p><strong>函数映射</strong>（主要介绍Dataframe中的应用）：可以<strong>将某个函数应用到Dataframe的各行/列或个各个元素上，实现一些统计运算</strong></p>
+<h2 id="内置函数"><a class="markdownIt-Anchor" href="#内置函数"></a> 内置函数</h2>
+<h2 id="函数映射主要介绍dataframe中的应用"><a class="markdownIt-Anchor" href="#函数映射主要介绍dataframe中的应用"></a> <strong>函数映射</strong>（主要介绍Dataframe中的应用）</h2>
+<p>函数映射允许<strong>将某个函数应用到Dataframe的各行/列或个各个元素上，实现一些统计运算</strong></p>
 <ul>
 <li>
 <p>作用于行/列</p>
@@ -815,8 +795,6 @@
 <li>
 <p>frame.apply(func=f, axis=1)</p>
 <p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/dc642aa8-3aef-4a93-bbdb-30869f081d8c-2137757.jpg" srcset="/img/loading.gif" alt="img" /></p>
-</li>
-</ul>
 </li>
 </ul>
 </li>
