@@ -35,7 +35,7 @@
       <link href="/2020/07/20/%E4%B8%BAFluid%E4%B8%BB%E9%A2%98%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0Utterance%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F.html"/>
       <url>/2020/07/20/%E4%B8%BAFluid%E4%B8%BB%E9%A2%98%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0Utterance%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F.html</url>
       
-        <content type="html"><![CDATA[<h1 id="github端"><a class="markdownIt-Anchor" href="#github端"></a> Github端</h1><p>创建GitHub仓库用于保存评论。</p><p>通过这个<a href="https://github.com/apps/utterances" target="_blank" rel="noopener">链接</a>添加一个utterances app，</p><p>在配置页面选择你要用于保存评论的github仓库地址。</p><p>在utterances<a href="https://utteranc.es/" target="_blank" rel="noopener">官网</a>根据提示获取用于配置的代码（之后这部分代码将嵌入到文章模板页中）</p><h1 id="hexo端"><a class="markdownIt-Anchor" href="#hexo端"></a> Hexo端</h1><p>本来想用灵活嵌入的方式（只需在Fuid配置文件中配置相关项，无需手动嵌入到文章模板页），但是期间遇到一个bug始终无法解决，最后决定采取直接嵌入式的方法。</p><p>这里采用的是直接嵌入式的方法（将utterance评论区直接嵌入到文章模板页，这个文章模板页在我的电脑位于<code>themes\fluid\layout\post.ejs</code>）</p><p>找到评论区部分，先删去Fluid主题预置的代码，然后将前面获取到的配置代码嵌入进来，如下图所示</p><p><img src="%E4%B8%BAFluid%E4%B8%BB%E9%A2%98%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0Utterance%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200720211718773.png" srcset="/img/loading.gif" alt="image-20200720211718773" /></p><p>在Fluid配置文件中让comment的配置项<code>enable: true</code>，即可开启评论。</p><p>此时重新生成静态文件然后部署网站即可看到评论。</p><p><img src="%E4%B8%BAFluid%E4%B8%BB%E9%A2%98%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0Utterance%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200720211922988.png" srcset="/img/loading.gif" alt="image-20200720211922988" /></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="github端"><a class="markdownIt-Anchor" href="#github端"></a> Github端</h1><ol><li><p>创建GitHub仓库用于保存评论（记得设置为公开仓库）</p></li><li><p>通过这个<a href="https://github.com/apps/utterances" target="_blank" rel="noopener">链接</a>为你的仓库添加一个utterances app，在配置页面选择你要用于保存评论的github仓库</p></li><li><p>在utterances<a href="https://utteranc.es/" target="_blank" rel="noopener">官网</a>根据提示获取用于配置的代码（之后这部分代码将嵌入到文章模板页中）</p><ol><li><p>设置仓库名所在的路径（使用第一步创建的仓库）</p><p><img src="%E4%B8%BAFluid%E4%B8%BB%E9%A2%98%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0Utterance%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200727003959338.png" srcset="/img/loading.gif" alt="image-20200727003959338" /></p></li><li><p>设置每条评论的名称（即issue的名称），这里我选择是把文章的标题作为评论的名称<img src="%E4%B8%BAFluid%E4%B8%BB%E9%A2%98%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0Utterance%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200727004415005.png" srcset="/img/loading.gif" alt="image-20200727004415005" /></p></li><li><p>设置issue的标签（可选），这里可以随意<img src="%E4%B8%BAFluid%E4%B8%BB%E9%A2%98%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0Utterance%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200727004518633.png" srcset="/img/loading.gif" alt="image-20200727004518633" /></p></li><li><p>当你完成1-3步时，改网页会自动生成配置代码，复制下来，之后要用到<img src="%E4%B8%BAFluid%E4%B8%BB%E9%A2%98%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0Utterance%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200727004644133.png" srcset="/img/loading.gif" alt="image-20200727004644133" /></p></li></ol></li></ol><h1 id="hexo端"><a class="markdownIt-Anchor" href="#hexo端"></a> Hexo端</h1><p>我本来想用灵活嵌入的方法（即只需在Fuid配置文件中配置相关项，无需手动嵌入到文章模板页），但是期间遇到一个bug始终无法解决，最后决定采取直接嵌入式的方法。</p><p>接下来我将介绍直接嵌入式的方法（将utterance评论区直接嵌入到文章模板页，这个文章模板页<code>post.ejs</code>在我的电脑位于<code>...\themes\fluid\layout\post.ejs</code>）</p><p>找到评论区部分（Ctrl+F 搜索<code>comments</code>进行定位），先删去Fluid主题有关comments的代码，然后将前面获取到的配置代码拷贝进来，如下图所示</p><p><img src="%E4%B8%BAFluid%E4%B8%BB%E9%A2%98%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0Utterance%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200720211718773.png" srcset="/img/loading.gif" alt="image-20200720211718773" /></p><p>最后，在Fluid配置文件中让comment的配置项<code>enable: true</code>，即可开启评论。</p><p><img src="%E4%B8%BAFluid%E4%B8%BB%E9%A2%98%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0Utterance%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200727005130208.png" srcset="/img/loading.gif" alt="image-20200727005130208" /></p><p>此时重新生成静态文件然后部署网站即可看到评论。</p><p><img src="%E4%B8%BAFluid%E4%B8%BB%E9%A2%98%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0Utterance%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/image-20200720211922988.png" srcset="/img/loading.gif" alt="image-20200720211922988" /></p>]]></content>
       
       
       <categories>
@@ -49,11 +49,11 @@
       
         <tags>
             
-            <tag> utterances </tag>
-            
-            <tag> fluid </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> Utterances </tag>
+            
+            <tag> Fluid </tag>
             
         </tags>
       
