@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.5k 字
+      4.6k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      44
+      58
        分钟
     </span>
   
@@ -248,7 +248,8 @@
 </ul>
 <h2 id="常用操作及对应方法"><a class="markdownIt-Anchor" href="#常用操作及对应方法"></a> <strong>常用操作及对应方法</strong></h2>
 <ul>
-<li>创建Series
+<li>
+<p>创建Series</p>
 <ul>
 <li>实例化方法：pd.Series(data=None, index=None)</li>
 <li>参数
@@ -283,7 +284,8 @@
 </li>
 </ul>
 </li>
-<li><strong>索引和切片</strong>（Series具备和ndarray类似的索引方式）
+<li>
+<p><strong>索引和切片</strong>（Series具备和ndarray类似的索引方式）</p>
 <ul>
 <li>索引
 <ul>
@@ -310,19 +312,35 @@
 </li>
 </ul>
 </li>
-<li>获取Series对象的唯一值数组
+<li>
+<p>获取Series对象的唯一值数组</p>
 <ul>
 <li>方法：Seires.unique()</li>
 <li>返回值：array</li>
 </ul>
 </li>
-<li>统计Series中各值出现的频次
+<li>
+<p>返回数值数组中最大/小元素对应的索引值</p>
+<ul>
+<li>方法：Series.argmax或Series.argmmin</li>
+<li>返回：最大元素的整数下标值</li>
+</ul>
+</li>
+<li>
+<p>返回数值数组中最大/小元素对应的索引名</p>
+<ul>
+<li>方法：Seires.idxmax或Series.idxmin  # Dataframe有同名方法和详解</li>
+</ul>
+</li>
+<li>
+<p><strong>统计Series中各值出现的频次</strong></p>
 <ul>
 <li>方法：Seires.value_counts()</li>
 <li>返回值：Series。索引部分是可能出现的所有值，数组是各值出现的频次。</li>
 </ul>
 </li>
-<li>获取Series中是否出现指定元素的一个bool型数组（之后可用于布尔索引或其他场景）
+<li>
+<p>获取Series中是否出现指定元素的一个bool型数组（之后可用于布尔索引或其他场景）</p>
 <ul>
 <li>方法：Seirse.isin(values)</li>
 <li>参数
@@ -339,12 +357,106 @@
 <li>返回值：Seires。判断原Series元素是否出现在values中的一个bool型Series</li>
 </ul>
 </li>
-<li><strong>统计一个列标签下各数值出现的频次</strong>
+<li>
+<p><strong>统计一个列标签下各数值出现的频次</strong></p>
 <ul>
 <li>方法：Series.value_counts()</li>
 </ul>
 </li>
-<li>重建索引，返回重建索引后的对象
+<li>
+<p>快速返回Series数据的统计信息</p>
+<ul>
+<li>方法：Series.describe()  #详见Dataframe中同名方法</li>
+</ul>
+</li>
+<li>
+<p>获取Series中数据在Index中对应的索引 的数组</p>
+<ul>
+<li>
+<p>方法：Index.get_indexer(Series)</p>
+</li>
+<li>
+<p>实例：获取s1中的数据在索引index中对应索引</p>
+<ul>
+<li>
+<p>s1 = pd.Series([‘c’, ‘a’, ‘b’, ‘b’, ‘c’, ‘a’])</p>
+</li>
+<li>
+<p>s2 = pd.Series([‘c’, ‘b’, ‘a’])</p>
+</li>
+<li>
+<p>index = pd.Index(s2)</p>
+</li>
+<li>
+<p>index.get_indexer(s1)</p>
+<p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200729164109333.png" srcset="/img/loading.gif" alt="image-20200729164109333" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>注：如果Seires的数据在Index中不存在，则返回的索引是-1</p>
+</li>
+</ul>
+</li>
+<li>
+<p>获取表示成员是否出现在特定序列的布尔对象/获取成员资格</p>
+<ul>
+<li>
+<p>方法：Series.isin(values)</p>
+</li>
+<li>
+<p>参数：</p>
+<ul>
+<li>values：set or list-like。表示要测试是否存在的值序列/集合。</li>
+</ul>
+</li>
+<li>
+<p>返回值：Series。将源Series中的数据替换为是否存在于values中的布尔值的新Series对象</p>
+</li>
+<li>
+<p>实例</p>
+<ul>
+<li>
+<p>s = Series([‘a’,‘a’,‘b’,‘c’, ‘b’, ‘a’])</p>
+</li>
+<li>
+<p>s.isin([‘b’,‘c’])</p>
+<p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200729154614054.png" srcset="/img/loading.gif" alt="image-20200729154614054" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>注：</p>
+<ul>
+<li>
+<p>values参数不能是单一值</p>
+</li>
+<li>
+<p>可以使用isin方法获取一个mask，再利用索引出特定的数据。</p>
+<ul>
+<li>
+<p>实例</p>
+<ul>
+<li>
+<p>s = Series([‘a’,‘a’,‘b’,‘c’, ‘b’, ‘a’])</p>
+</li>
+<li>
+<p>mask = s.isin([‘b’, ‘c’])</p>
+</li>
+<li>
+<p>s[mask]</p>
+<p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200729155014892.png" srcset="/img/loading.gif" alt="image-20200729155014892" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>重建索引，返回重建索引后的对象</p>
 <ul>
 <li>方法：Series.reindex(index=None, **kwargs)</li>
 <li>参数
@@ -586,10 +698,15 @@
 </li>
 </ul>
 </li>
-<li>快速返回Dataframe<strong>每列</strong>数据的统计信息
+<li><strong>快速返回Dataframe每列数据的统计信息</strong>
 <ul>
 <li>方法：df.describe()</li>
-<li>这些统计信息包括：元素数、数学期望、标准差、最小/大值、分位数</li>
+<li>返回的统计信息取决于数值类型。
+<ul>
+<li>对于数值型数据会返回：元素数、数学期望、标准差、最小/大值、分位数。</li>
+<li>对于object数据会返回：数据总数、唯一值集合包含的元素数、出现次数最多的数（top）、出现次数最多数的频度（freq）</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>删除指定行索引/列索引的数据
@@ -678,9 +795,87 @@
 </li>
 </ul>
 </li>
+<li><strong>返回行/列数据中最大/小元素对应的索引名</strong>
+<ul>
+<li>方法：df.idxmax(axis=0, skipna=True) 或 df.idxmin(axis=0, skipna=True)</li>
+<li>参数
+<ul>
+<li>skipna：bool（默认True）。是否排除NaN。设为True时，只有整行/列为NaN时，返回才是NaN。设为False是，若行/列出现NaN，则返回NaN。</li>
+</ul>
+</li>
+<li>实例1：返回各列最大元素的下标
+<ul>
+<li>df = pd.DataFrame([[1.4, np.nan], [7.1, -4.5], [np.nan, np.nan], [0.75, -1.3]], index=[‘a’, ‘b’, ‘c’, ‘d’], columns=[‘one’, ‘two’])</li>
+<li><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200727111932050.png" srcset="/img/loading.gif" alt="image-20200727111932050" /></li>
+</ul>
+</li>
+<li>实例2：返回各行最小元素的下标
+<ul>
+<li>df = pd.DataFrame([[1.4, np.nan], [7.1, -4.5], [np.nan, np.nan], [0.75, -1.3]], index=[‘a’, ‘b’, ‘c’, ‘d’], columns=[‘one’, ‘two’])</li>
+<li><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200727112203623.png" srcset="/img/loading.gif" alt="image-20200727112203623" /></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="时间序列"><a class="markdownIt-Anchor" href="#时间序列"></a> 时间序列</h2>
 <h1 id="文件读写"><a class="markdownIt-Anchor" href="#文件读写"></a> 文件读写</h1>
+<p>与读取有关的函数如下所示</p>
+<p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200731093200053.png" srcset="/img/loading.gif" alt="image-20200731093200053" /></p>
+<p>这些函数的功能主要有</p>
+<ul>
+<li>索引：将一个或多个列当做返回的DataFrame处理，以及是否从文件、用户获取列名。</li>
+<li>类型推断和数据转换：包括用户定义值的转换、和自定义的缺失值标记列表等。</li>
+<li>日期解析：包括组合功能，比如将分散在多个列中的日期时间信息组合成结果中的单个列。</li>
+<li>迭代：支持对大文件进行逐块迭代。</li>
+<li>数据规整：跳过一些行、页脚、注释或其他一些不重要的东西（比如由成千上万个逗号隔开的数值数据）。</li>
+</ul>
+<h2 id="文本文件"><a class="markdownIt-Anchor" href="#文本文件"></a> 文本文件</h2>
+<ul>
+<li>
+<p>读取csv文件</p>
+<ul>
+<li>
+<p>方法：pd.read_csv(filepath_or_buffer, sep=’,’, delimiter=None, header=‘infer’, names=None, index_col=None,…)</p>
+</li>
+<li>
+<p>参数：</p>
+<ul>
+<li>filepath_or_buffer：str, path object or file-like object。该参数也可以是一个URL（协议支持：http, ftp, s3）</li>
+<li>sep：str, default ‘,’。表示使用的分隔符。如果字符超过1，则被解释为正则字符串。</li>
+<li>delimiter：str，默认为None。表示分隔符的别名。</li>
+<li>header：int, list of int, default ‘infer’。表示选择文件中第几行数据作为列标签，正式数据从该行之后开始计。
+<ul>
+<li>默认情况<code>header='infer'</code>相当于<code>header=0</code>，即用第一行数据作为列标签。</li>
+<li>当<code>header=None</code>时，会自动生成数字序列作为列标签。</li>
+</ul>
+</li>
+<li>names：array-like, optional。自定义的列标签。</li>
+<li>index_col：int, str, sequence of int / str, or False, default <code>None</code>。表示要作为Dataframe行标签的列。</li>
+</ul>
+</li>
+<li>
+<p>实例</p>
+<ul>
+<li>
+<p>实例一</p>
+<p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200731142736233.png" srcset="/img/loading.gif" alt="image-20200731142736233" /></p>
+</li>
+<li>
+<p>实例二：指定Dataframe某（几）列数据作为行标签</p>
+<p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200731144916975.png" srcset="/img/loading.gif" alt="image-20200731144916975" /></p>
+</li>
+<li>
+<p>实例三：层次化索引</p>
+<p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200731145624594.png" srcset="/img/loading.gif" alt="image-20200731145624594" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二进制文件"><a class="markdownIt-Anchor" href="#二进制文件"></a> 二进制文件</h2>
+<h2 id="数据库交互"><a class="markdownIt-Anchor" href="#数据库交互"></a> 数据库交互</h2>
 <h1 id="算数运算"><a class="markdownIt-Anchor" href="#算数运算"></a> 算数运算</h1>
 <h2 id="常用运算符及对应函数"><a class="markdownIt-Anchor" href="#常用运算符及对应函数"></a> 常用运算符及对应函数</h2>
 <p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/fc8a8217-ef8a-4db2-b6cd-50ce6fccab65-2137757.jpg" srcset="/img/loading.gif" alt="img" /></p>
@@ -747,8 +942,22 @@
 </ul>
 </li>
 </ul>
-<h1 id="函数"><a class="markdownIt-Anchor" href="#函数"></a> 函数</h1>
-<h2 id="内置函数"><a class="markdownIt-Anchor" href="#内置函数"></a> 内置函数</h2>
+<h1 id="统计方法和函数映射"><a class="markdownIt-Anchor" href="#统计方法和函数映射"></a> 统计方法和函数映射</h1>
+<h2 id="统计汇总方法"><a class="markdownIt-Anchor" href="#统计汇总方法"></a> 统计汇总方法</h2>
+<p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200728122412053.png" srcset="/img/loading.gif" alt="image-20200728122412053" /></p>
+<ul>
+<li>Series求或Dataframe按行/列求和
+<ul>
+<li>方法：Series.sum 或 df.sum(axis=None, skipna=None, level=None, numeric_only=None, min_count=0, **kwargs)</li>
+<li>参数
+<ul>
+<li>axis：{index (0), columns (1)}。要将函数应用到行轴还是列轴（默认行轴，即影响各列）</li>
+<li>skipna：bool（默认True）。计算时是否考虑NaN。设置为False时，只要行/列出现NaN，则行/列运算后结果也是NaN。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="函数映射主要介绍dataframe中的应用"><a class="markdownIt-Anchor" href="#函数映射主要介绍dataframe中的应用"></a> <strong>函数映射</strong>（主要介绍Dataframe中的应用）</h2>
 <p>函数映射允许<strong>将某个函数应用到Dataframe的各行/列或个各个元素上，实现一些统计运算</strong></p>
 <ul>
@@ -769,7 +978,7 @@
 <p>实例</p>
 <ul>
 <li>
-<p><strong>计算Dataframe各列元素最大值与最小值之差，返回Series</strong></p>
+<p><strong>实例1：计算Dataframe各列元素最大值与最小值之差，返回Series</strong></p>
 <ul>
 <li>
 <p>frame = pd.DataFrame(np.random.randn(4, 3), columns=list(‘bde’), index=[‘Utah’, ‘Ohio’, ‘Texas’, ‘Oregon’])</p>
@@ -784,7 +993,7 @@
 </ul>
 </li>
 <li>
-<p><strong>计算Dataframe各行元素最小值和最大值，返回Dataframe</strong></p>
+<p><strong>实例2：计算Dataframe各行元素最小值和最大值，返回Dataframe</strong></p>
 <ul>
 <li>
 <p>frame = pd.DataFrame(np.random.randn(4, 3), columns=list(‘bde’), index=[‘Utah’, ‘Ohio’, ‘Texas’, ‘Oregon’])</p>
@@ -795,6 +1004,18 @@
 <li>
 <p>frame.apply(func=f, axis=1)</p>
 <p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/dc642aa8-3aef-4a93-bbdb-30869f081d8c-2137757.jpg" srcset="/img/loading.gif" alt="img" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>实例3：统计Dataframe各列不同值（各属性值）的频次</p>
+<ul>
+<li>
+<p>data = pd.DataFrame({‘Qu1’: [1, 3, 4, 3, 4], ‘Qu2’: [2, 3, 1, 2, 3], ‘Qu3’: [1, 5, 2, 4, 4]})</p>
+</li>
+<li>
+<p>data.apply(pd.value_counts).fillna(0)</p>
+<p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200729170107335.png" srcset="/img/loading.gif" alt="image-20200729170107335" /></p>
 </li>
 </ul>
 </li>
