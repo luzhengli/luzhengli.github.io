@@ -17,10 +17,21 @@
   <meta name="description" content="这是coy的个人博客，分享知识与生活。目前博客还在初创阶段，早期文章可见知乎专栏。">
   <meta name="author" content="luyao">
   <meta name="keywords" content="blog,coy,博客">
-  <title>分类 - Pandas - coy&#39;s Blog</title>
+  <title>Pandas使用技巧：对大文件进行分块操作 - coy&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -42,7 +53,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -142,7 +153,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/images/%E5%88%86%E7%B1%BB_banner.jpg') no-repeat center center;
+         style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -150,6 +161,40 @@
             <span class="h2" id="subtitle">
               
             </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-02 18:18">
+      2020年8月2日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      366 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -162,37 +207,130 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 1 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/07/27/Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Pandas常用操作参考手册</span>
-      <span style="float: right;">07-27</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：4 分钟前
+                
+              </p>
+            
+            <article class="markdown-body">
+              <p>真实世界中我们通常要处理数据量很大的文件（千万级、亿级）。如果直接使用pandas的IO函数读取这类文件，机器的内存一般吃不消。</p>
+<p><strong>为了高效处理大文件，pandas的IO函数提供了分块读取的功能（通过chunksize参数实现）</strong>。我们看一个例子。</p>
+<h1 id="引例"><a class="markdownIt-Anchor" href="#引例"></a> 引例</h1>
+<p>'ex6.csv’是包含10000行数据的文件（<a href="https://github.com/wesm/pydata-book/blob/2nd-edition/examples/ex6.csv" target="_blank" rel="noopener">下载</a>），其结构如下：</p>
+<p><img src="Pandas%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%EF%BC%9A%E5%AF%B9%E5%A4%A7%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%88%86%E5%9D%97%E6%93%8D%E4%BD%9C/image-20200802142212061-1596364094943.png" srcset="/img/loading.gif" alt="image-20200802142212061" /></p>
+<p>假设现在希望统计’key’列所有值的频次。如果能一次读取该文件，可以直接使用<code>Series.value_counts</code>方法解决：</p>
+<pre><code class="hljs python">df = read_csv(<span class="hljs-string">'ex6.csv'</span>)
+df.value_counts()</code></pre>
+<p>上述方法对于本例的数据量来说还可行，但如果文件过大，我们一般会先分块读取，再进行操作。对于本例来说就是先将文件读取为一个个块（chunk），再统计各个块的值的频次，然后将所有统计结果（Series对象）相加：</p>
+<pre><code class="hljs python">chunker = read_csv(<span class="hljs-string">'ex6.csv'</span>, chunksize=<span class="hljs-number">1000</span>)  <span class="hljs-comment"># 分块读取，每个块包含1000行数据</span>
 
+tot = pd.Series()  <span class="hljs-comment"># 创建空Series 用于保存中间计算结果</span>
+<span class="hljs-keyword">for</span> chunk <span class="hljs-keyword">in</span> chunker:
+    tot = tot.add(chunk[<span class="hljs-string">'key'</span>].value_counts(), fill_value=<span class="hljs-number">0</span>)  <span class="hljs-comment"># 各chunk数值统计结果再求和</span>
+tot = tot.sort_values(ascending=<span class="hljs-literal">False</span>)  <span class="hljs-comment"># 降序排列</span></code></pre>
+<ul>
+<li><code>chunk['key'].value_counts()</code>会获得每个块的数值频次的统计结果（返回Seires对象）</li>
+<li><code>Series.add</code>方法可以实现两个Series的加法，还可以设置fill_value参数以填充空缺值。</li>
+</ul>
+<p>还会陆续补充其他案例…</p>
 
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Python/">Python</a>
+                    
+                      <a class="hover-with-bg" href="/categories/Python/Pandas/">Pandas</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Pandas/">Pandas</a>
+                    
+                  </div>
+                
               </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/27/Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C.html">
+                        <span class="hidden-mobile">Pandas常用操作参考手册</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
             </div>
+
+            
+              <!-- 《utteranc评论：基于github issue的评论系统 -->
+              <div>
+                <section id="comments" class="comments">
+                  <style>
+                    .utterances {
+                      max-width: 100%;
+                    }
+                  </style>
+                  <script src="https://utteranc.es/client.js" 
+                          repo="luzhengli/commit-utterance" 
+                          issue-term="title" 
+                          label="utterance"
+                          theme="github-light" 
+                          crossorigin="anonymous" 
+                          async>
+                  </script>
+                </section>
+              </div>
+              <!-- utteranc评论》 -->
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -329,6 +467,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -336,7 +499,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "分类 - Pandas&nbsp;",
+        "Pandas使用技巧：对大文件进行分块操作&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -350,6 +513,21 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
 
 
 
@@ -365,9 +543,30 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+  
 
 
 
