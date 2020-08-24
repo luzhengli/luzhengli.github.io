@@ -219,7 +219,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：22 天前
+                  本文最后更新于：4 分钟前
                 
               </p>
             
@@ -228,7 +228,7 @@
 <p><strong>为了高效处理大文件，pandas的IO函数提供了分块读取的功能（通过chunksize参数实现）</strong>。我们看一个例子。</p>
 <h1 id="引例"><a class="markdownIt-Anchor" href="#引例"></a> 引例</h1>
 <p>'ex6.csv’是包含10000行数据的文件（<a href="https://github.com/wesm/pydata-book/blob/2nd-edition/examples/ex6.csv" target="_blank" rel="noopener">下载</a>），其结构如下：</p>
-<p><img src="Pandas%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%EF%BC%9A%E5%AF%B9%E5%A4%A7%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%88%86%E5%9D%97%E6%93%8D%E4%BD%9C/image-20200802142212061-1596364094943.png" srcset="/img/loading.gif" alt="image-20200802142212061" /></p>
+<p><img src="https://gitee.com/llillz/images/raw/master/image-20200802142212061-1596364094943.png" srcset="/img/loading.gif" alt="image-20200802142212061" /></p>
 <p>假设现在希望统计’key’列所有值的频次。如果能一次读取该文件，可以直接使用<code>Series.value_counts</code>方法解决：</p>
 <pre><code class="hljs python">df = read_csv(<span class="hljs-string">'ex6.csv'</span>)
 df.value_counts()</code></pre>

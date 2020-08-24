@@ -246,8 +246,8 @@
 <span class="hljs-attr">categories:</span> <span class="hljs-string">blog</span>
 <span class="hljs-meta">---</span></code></pre>
 <p>你显示的内容可能未必与我一样，不必担心，这是由于我自定义过。只需要知道，上面的内容在hexo被称作<strong>Front-matter，实际上就是该文章的一些变量，用于实现一些特定的功能</strong>。比如使<code>author: luyao</code>，那么渲染后的文章中将显示文章作者为<code>luyao</code>。</p>
-<p>如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在<code>scaffolds/</code>目录下，可以看到hexo自带的三种布局其实就是三个<code>.md</code>文件：<img src="%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0/image-20200416160635509.png" srcset="/img/loading.gif" alt="image-20200416160635509" /></p>
-<p>而每一个文件中的内容实际只包含一个Front-matter。<img src="%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0/image-20200416160817070.png" srcset="/img/loading.gif" alt="image-20200416160817070" />因此，你可以在这里修改布局或者建立新的布局，然后创建文章时使用这些布局。</p>
+<p>如何自定义布局呢？实际上，布局是一个markdown文件，它们保存在<code>scaffolds/</code>目录下，可以看到hexo自带的三种布局其实就是三个<code>.md</code>文件：<img src="https://gitee.com/llillz/images/raw/master/image-20200416160635509.png" srcset="/img/loading.gif" alt="image-20200416160635509" /></p>
+<p>而每一个文件中的内容实际只包含一个Front-matter。<img src="https://gitee.com/llillz/images/raw/master/image-20200416160817070.png" srcset="/img/loading.gif" alt="image-20200416160817070" />因此，你可以在这里修改布局或者建立新的布局，然后创建文章时使用这些布局。</p>
 <h2 id="草稿"><a class="markdownIt-Anchor" href="#草稿"></a> 草稿</h2>
 <p>使用<code>hexo n draft draft1</code>命令将在<code>source\</code>目录下创建<code>_drafts</code>目录，并生成一个<code>draft1.md</code>文件。</p>
 <p>当你编辑完草稿后，可以把文章推送到<code>_posts</code>目录下，通过下面的命令：</p>
@@ -283,7 +283,7 @@
 </li>
 <li>
 <p>然后使用<code>hexo n text</code>命令后创建一个使用post布局名为text的文章，你将发现hexo在<code>\source\_post</code>文件夹下创建了一个<code>\text</code>文件夹以及同名的<code>.md</code>文件：</p>
-<p><img src="%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0/image-20200418002619163.png" srcset="/img/loading.gif" alt="image-20200418002619163" /></p>
+<p><img src="https://gitee.com/llillz/images/raw/master/image-20200418002619163.png" srcset="/img/loading.gif" alt="image-20200418002619163" /></p>
 </li>
 <li>
 <p>最后就可以打开<code>text.md</code>文件进行编辑了，你可以把要引用的图片放到同名文件夹下，然后使用相对路径进行引用。<strong>注意</strong>：请不要自作聪明将<code>text.md</code>文件移动到同名文件夹下，经本人尝试，发现这样会导致图片无法正常引用（如果有兴趣可以试试，成功了记得下@博主）。</p>
@@ -292,7 +292,7 @@
 </li>
 </ol>
 <p><strong>Tip</strong>：如果你使用的是<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a>编辑器，可以在编辑器的文件/偏好设置/图像中进行如下设置：</p>
-<p><img src="%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0/image-20200418003255735.png" srcset="/img/loading.gif" alt="image-20200418003255735" /></p>
+<p><img src="https://gitee.com/llillz/images/raw/master/image-20200418003255735.png" srcset="/img/loading.gif" alt="image-20200418003255735" /></p>
 <p>这样你每次直接拷贝到文章的截图将会被自动保存到同名的文件夹下，非常方便~</p>
 <h2 id="插入视频"><a class="markdownIt-Anchor" href="#插入视频"></a> 插入视频</h2>
 <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"480"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"320"</span> <span class="hljs-attr">controls</span>&gt;</span>
@@ -316,7 +316,7 @@ content...
 Quick Start
 &#123;% endblockquote %&#125;</code></pre>
 <p>效果如下：</p>
-<p><img src="%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0/image-20200416171525436.png" srcset="/img/loading.gif" alt="image-20200416171525436" /></p>
+<p><img src="https://gitee.com/llillz/images/raw/master/image-20200416171525436.png" srcset="/img/loading.gif" alt="image-20200416171525436" /></p>
 <p>还有一种简单的引用语法：</p>
 <pre><code class="hljs markdown"><span class="hljs-quote">&gt; 这也是引用</span>
 &gt;
@@ -324,7 +324,7 @@ Quick Start
 &gt;
 <span class="hljs-quote">&gt; 饮用2</span></code></pre>
 <p>效果如下：</p>
-<p><img src="%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0/image-20200416171816955.png" srcset="/img/loading.gif" alt="image-20200416171816955" /></p>
+<p><img src="https://gitee.com/llillz/images/raw/master/image-20200416171816955.png" srcset="/img/loading.gif" alt="image-20200416171816955" /></p>
 <h2 id="代码区块"><a class="markdownIt-Anchor" href="#代码区块"></a> 代码区块</h2>
 <pre><code class="hljs markdown">&#123;% codeblock [title] [lang:language] [url] [link text] [additional options] %&#125;
 code snippet
@@ -334,7 +334,7 @@ code snippet
 <p>例如：</p>
 <p><img src="%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0/image-20200416175146292.png" srcset="/img/loading.gif" alt="image-20200416175146292" /></p>
 <p>效果如下：<br />
-<img src="%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0/image-20200416171403074.png" srcset="/img/loading.gif" alt="image-20200416171403074" /></p>
+<img src="https://gitee.com/llillz/images/raw/master/image-20200416171403074.png" srcset="/img/loading.gif" alt="image-20200416171403074" /></p>
 <p>hexo还提供了一些<a href="https://hexo.io/zh-cn/docs/tag-plugins" target="_blank" rel="noopener">标签插件</a>支持你引用其他资源，如视频、iframe等。不过不常用，有兴趣的朋友可以自己了解下。</p>
 <h1 id="本地预览"><a class="markdownIt-Anchor" href="#本地预览"></a> 本地预览</h1>
 <p>编写好markdown文章后接下来就需要渲染、生成静态文件，启动本地端口查看效果了。</p>
@@ -351,7 +351,7 @@ code snippet
 </blockquote>
 <p>生成静态文件之后，便要启动本地端口。然后访问命令行返回的地址便能在本地访问到博客了。</p>
 <p>效果如下：</p>
-<p><img src="%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0/image-20200418010323851.png" srcset="/img/loading.gif" alt="image-20200418010323851" /></p>
+<p><img src="https://gitee.com/llillz/images/raw/master/image-20200418010323851.png" srcset="/img/loading.gif" alt="image-20200418010323851" /></p>
 <h1 id="自定义主题"><a class="markdownIt-Anchor" href="#自定义主题"></a> 自定义主题</h1>
 <p>启用主题的步骤：</p>
 <ul>
@@ -372,7 +372,7 @@ code snippet
 <ol>
 <li>
 <p>部署到github时，仓库名称没有和github账户名一致（这里需要特别小心，账户名≠name）。举例来说，在github个人主页中，小字部分<code>luzhengli</code>才是账户名：</p>
-<p><img src="%E4%BD%BF%E7%94%A8hexo%E6%96%B0%E5%BB%BA%E3%80%81%E7%BC%96%E8%BE%91%E5%B9%B6%E9%A2%84%E8%A7%88%E6%96%87%E7%AB%A0/image-20200416163415605.png" srcset="/img/loading.gif" alt="image-20200416163415605" /></p>
+<p><img src="https://gitee.com/llillz/images/raw/master/image-20200416163415605.png" srcset="/img/loading.gif" alt="image-20200416163415605" /></p>
 </li>
 <li>
 <p>部署后发现无法通过主域名访问，必须主域名+index.html才能访问。解决办法如下：</p>
