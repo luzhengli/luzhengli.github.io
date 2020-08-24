@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      6k 字
+      7.1k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      76
+      89
        分钟
     </span>
   
@@ -219,7 +219,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：3 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
@@ -304,7 +304,18 @@
 <li>s[[2,1,3]]</li>
 </ul>
 </li>
-<li>布尔索引：s[s&lt;2]</li>
+<li>布尔索引：
+<ul>
+<li>s[s&lt;2]</li>
+<li>student[(student[‘Sex’]==‘F’) &amp; (student[‘Age’]&gt;12)]  # 查询所有大于12岁的女生信息</li>
+<li><strong>注</strong>：多条件的布尔索引中，条件之间用<code>&amp;</code>或<code>|</code>连接起来。</li>
+</ul>
+</li>
+<li>布尔索引+花式索引
+<ul>
+<li>student[(student[‘Sex’]==‘F’) &amp; (student[‘Age’]&gt;12)][[‘Name’,‘Height’,‘Weight’]]  # 查询所有大于12岁女生的姓名、身高和体重</li>
+</ul>
+</li>
 <li>用loc和iloc进行类似numpy数组的’[ , ]'索引或切片（Dataframe部分有详细介绍）</li>
 <li>带有重复标签的轴索引（pandas不强制索引唯一）：此时会根据索引是否重复返回Series或标量值</li>
 </ul>
@@ -716,55 +727,6 @@
 </li>
 </ul>
 </li>
-<li><strong>缺失值处理</strong>
-<ul>
-<li>判断Dataframe对象的元素是否为null值，返回一个bool型Dateframe对象
-<ul>
-<li>方法：df.isnull()</li>
-<li><strong>注</strong>：结合sum()方法可以<strong>统计各列/行缺失数据的个数</strong>
-<ul>
-<li>eg1：df.isnull().sum(0) # 判断各列缺失数据的个数（sum中的0可以省略）</li>
-<li>eg2：df.isnull().sum(1) # 判断各行缺失数据的个数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>删除带有缺失值的行/列
-<ul>
-<li>方法：df.dropna(axis=0,how=‘any’,thresh=None,subset=None,inplace=False)</li>
-<li>参数
-<ul>
-<li>axis：默认是0（删除行），可以设置为1（删除列）</li>
-<li>how：默认是’any’（行/列中只要包含Null值就删除），可以改为’all’（必须整行/列是Null才删除）</li>
-<li>thresh：non-Null数小于特定阈值thersh的行/列才删除（eg. 某列数据包含一个非Null值，设置thresh=1，则该列数据不会被删除）</li>
-<li>subset：行标签或者列标签的列表（eg. [“names”, “age”, “bron”], [2,3,0]）。
-<ul>
-<li>当为行标签的列表时，表示删除列时要考虑是否存在Null值的行。</li>
-<li>当为列标签的列表时，表示删除行时要考虑是否存在Null值的列。</li>
-</ul>
-</li>
-<li>inplace：True或False（默认）。表示是否立即在本数据上生效。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>填充缺失值
-<ul>
-<li>方法：df.fillna(value=None,method=None,axis=None,inplace=False,limit=None,…)</li>
-<li>参数
-<ul>
-<li>value：scalar, dict, Series, or DataFrame。指定value中的值填充到df对应的行或列中。</li>
-<li>method：‘backfill’, ‘bfill’, ‘pad’, ‘ffill’, None。method='ffill’表示以前面的值进行填充</li>
-<li>axis：0 or ‘index’, 1 or ‘columns’。选择按列填充还是按行填充</li>
-<li>inplace：是否立即修改</li>
-<li>limit：限制填充的个数</li>
-<li>实例：<a href="https://www.jb51.net/article/163899.htm" target="_blank" rel="noopener">https://www.jb51.net/article/163899.htm</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
 <li>Dataframe转numpy.ndarray
 <ul>
 <li>方法：df.to_numpy()</li>
@@ -1012,9 +974,73 @@
 <h1 id="数据处理"><a class="markdownIt-Anchor" href="#数据处理"></a> 数据处理</h1>
 <h2 id="数据清洗"><a class="markdownIt-Anchor" href="#数据清洗"></a> 数据清洗</h2>
 <h3 id="缺失值空值"><a class="markdownIt-Anchor" href="#缺失值空值"></a> 缺失值/空值</h3>
+<blockquote>
+<p>Q1：如何判断是否存在缺失值？</p>
+<p>A1：isnull方法</p>
+<p>Q2：如何处理缺失值？</p>
+<p>A2：常用的有三大类方法，即删除法、填补法和插值法。</p>
+<ul>
+<li><strong>删除法：</strong>
+<ul>
+<li>当数据中的某个变量大部分值都是缺失值，可以考虑删除改变量；</li>
+<li>当缺失值是随机分布的，且缺失的数量并不是很多是，也可以删除这些缺失的观测；</li>
+</ul>
+</li>
+<li><strong>替补法：</strong>
+<ul>
+<li>对于连续型变量，如果变量的分布近似或就是正态分布的话，可以用<strong>均值</strong>替代那些缺失值；</li>
+<li>如果变量是有偏的，可以使用<strong>中位数</strong>来代替那些缺失值；</li>
+<li>对于离散型变量，我们一般用<strong>众数</strong>去替换那些存在缺失的观测；</li>
+</ul>
+</li>
+<li><strong>插补法：<strong>插补法是基于蒙特卡洛模拟法，结合线性模型、广义线性模型、决策树等方法计算出来的</strong>预测值替换缺失值</strong>。</li>
+</ul>
+</blockquote>
 <p>对于<strong>数值型</strong>数据，pandas使用浮点值<code>NaN</code>（Not a Number）来表示<strong>缺失值</strong>。表示数值型数据时，Python的<code>None</code>也被解释为<code>NaN</code>。</p>
 <p>下面是处理缺失值的一些函数</p>
 <p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200805150631403.png" srcset="/img/loading.gif" alt="image-20200805150631403" /></p>
+<p>判断Dataframe对象的元素是否为null值，返回一个bool型Dateframe对象</p>
+<ul>
+<li>方法：df.isnull()</li>
+<li><strong>注</strong>：结合sum()方法可以<strong>统计各列/行缺失数据的个数</strong>
+<ul>
+<li>eg1：df.isnull().sum(0) # 判断各列缺失数据的个数（sum中的0可以省略）</li>
+<li>eg2：df.isnull().sum(1) # 判断各行缺失数据的个数</li>
+</ul>
+</li>
+</ul>
+<p>删除带有缺失值的行/列</p>
+<ul>
+<li>方法：df.dropna(axis=0,how=‘any’,thresh=None,subset=None,inplace=False)</li>
+<li>参数
+<ul>
+<li>axis：默认是0（删除行），可以设置为1（删除列）</li>
+<li>how：默认是’any’（行/列中只要包含Null值就删除），可以改为’all’（必须整行/列是Null才删除）</li>
+<li>thresh：non-Null数少于特定阈值thersh的行/列才会被删除（eg. 某列数据包含一个非Null值，设置thresh=1，则该列数据不会被删除）</li>
+<li>subset：行标签或者列标签的列表（eg. [“names”, “age”, “bron”], [2,3,0]）。
+<ul>
+<li>当为行标签的列表时，表示删除列时要考虑是否存在Null值的行。</li>
+<li>当为列标签的列表时，表示删除行时要考虑是否存在Null值的列。</li>
+</ul>
+</li>
+<li>inplace：True或False（默认）。表示是否立即在本数据上生效。</li>
+</ul>
+</li>
+</ul>
+<p>替补法填充缺失值</p>
+<ul>
+<li>方法：df.fillna(value=None,method=None,axis=None,inplace=False,limit=None,…)</li>
+<li>参数
+<ul>
+<li>value：scalar, dict, Series, or DataFrame。指定value中的值填充到df对应的行或列中。</li>
+<li>method：‘backfill’, ‘bfill’, ‘pad’, ‘ffill’, None。method='ffill’表示以前面的值进行填充</li>
+<li>axis：0 or ‘index’, 1 or ‘columns’。选择按列填充还是按行填充</li>
+<li>inplace：是否立即修改</li>
+<li>limit：限制填充的个数</li>
+<li>实例：<a href="https://www.jb51.net/article/163899.htm" target="_blank" rel="noopener">https://www.jb51.net/article/163899.htm</a></li>
+</ul>
+</li>
+</ul>
 <h3 id="重复值"><a class="markdownIt-Anchor" href="#重复值"></a> 重复值</h3>
 <ul>
 <li>
@@ -1076,6 +1102,16 @@
 <li>axis：0（默认） or 1。 0表示label是行标签名，1表示label是列标签名</li>
 <li>index：list or list-like。行标签名，单独使用</li>
 <li>columns：list or list-like。列标签名，单独使用</li>
+<li>inplace：True 或 False（默认）。表示是否立即生效</li>
+</ul>
+</li>
+<li>实例
+<ul>
+<li>实例1：删除满足条件的行
+<ul>
+<li>student.drop(student[student[‘Age’]&gt;14].index, axis=0)  # 删除大于14岁的所有学生数据</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1271,28 +1307,159 @@ dtype: object</code></pre>
 </blockquote>
 <p>主要有以下四个函数实现</p>
 <ul>
-<li>concat，与 numpy 中的 concatenate 类似，但功能更为强大，可通过一个 axis 参数设置是横向或者拼接，<strong>要求非拼接轴向标签唯一</strong>（例如沿着行进行拼接时，要求每个 df 内部列名是唯一的，但两个 df 间可以重复，毕竟有相同列才有拼接的实际意义）</li>
-<li>merge，完全类似于 SQL 中的 join 语法，仅支持横向拼接，通过设置连接字段，实现对同一记录的不同列信息连接，支持 inner、left、right 和 outer4 种连接方式，但只能实现 SQL 中的等值连接</li>
+<li>合并
+<ul>
+<li>merge，完全类似于 SQL 中的 join 语法，仅支持横向合并（把列作为键进行合并），通过设置连接字段，实现对同一记录的不同列信息连接，支持 inner、left、right 和 outer4 种连接方式，但只能实现 SQL 中的等值连接</li>
 <li>join，语法和功能与 merge 一致，不同的是 merge 既可以用 pandas 接口调用，也可以用 dataframe 对象接口调用，而 join 则只适用于 dataframe 对象接口</li>
+</ul>
+</li>
+<li>拼接
+<ul>
+<li>concat，与 numpy 中的 concatenate 类似，但功能更为强大，可通过一个 axis 参数设置是横向或者拼接，<strong>要求非拼接轴向标签唯一</strong>（例如沿着行进行拼接时，要求每个 df 内部列名是唯一的，但两个 df 间可以重复，毕竟有相同列才有拼接的实际意义）</li>
 <li>append，concat 执行 axis=0 时的一个简化接口，类似列表的 append 函数一样</li>
 </ul>
-<h1 id="数据分析"><a class="markdownIt-Anchor" href="#数据分析"></a> 数据分析</h1>
-<h2 id="统计汇总方法"><a class="markdownIt-Anchor" href="#统计汇总方法"></a> 统计汇总方法</h2>
-<p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200728122412053.png" srcset="/img/loading.gif" alt="image-20200728122412053" /></p>
-<ul>
-<li>Series求或Dataframe按行/列求和
-<ul>
-<li>方法：Series.sum 或 df.sum(axis=None, skipna=None, level=None, numeric_only=None, min_count=0, **kwargs)</li>
-<li>参数
-<ul>
-<li>axis：{index (0), columns (1)}。要将函数应用到行轴还是列轴（默认行轴，即影响各列）</li>
-<li>skipna：bool（默认True）。计算时是否考虑NaN。设置为False时，只要行/列出现NaN，则行/列运算后结果也是NaN。</li>
+</li>
 </ul>
+<h3 id="合并连接"><a class="markdownIt-Anchor" href="#合并连接"></a> 合并/连接</h3>
+<p>合并的基本原理</p>
+<ul>
+<li>指定两个待合并的对象（Dataframe），分别位于左右两边。</li>
+<li>指定左边对象的键，指定右边对象的键。  # 键可以是列名、行索引名</li>
+<li>根据键，采用特定的方式进行合并。  # 这里的特定方式即 SQL 中的四种连接方式</li>
+</ul>
+<p>merge 函数的API</p>
+<pre><code class="hljs python">pd.merge(
+    left,
+    right,
+    how: str = <span class="hljs-string">'inner'</span>,
+    on=<span class="hljs-literal">None</span>,
+    left_on=<span class="hljs-literal">None</span>,
+    right_on=<span class="hljs-literal">None</span>,
+    left_index: bool = <span class="hljs-literal">False</span>,
+    right_index: bool = <span class="hljs-literal">False</span>,
+    sort: bool = <span class="hljs-literal">False</span>,
+    suffixes=(<span class="hljs-string">'_x'</span>, <span class="hljs-string">'_y'</span>),
+    copy: bool = <span class="hljs-literal">True</span>,
+    indicator: bool = <span class="hljs-literal">False</span>,
+    validate=<span class="hljs-literal">None</span>,
+) -&gt; 'DataFrame'</code></pre>
+<p>merge 的连接方式有以下四种</p>
+<p><img src="Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/image-20200822165612643.png" srcset="/img/loading.gif" alt="image-20200822165612643" /></p>
+<p>实例</p>
+<ul>
+<li>
+<p>实例1（内连接）：以key为键，合并df1、df2</p>
+<ul>
+<li>
+<pre class="highlight"><code class="python">  df1 = pd.DataFrame({<span class="hljs-string">'key'</span>: [<span class="hljs-string">'b'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>], <span class="hljs-string">'data1'</span>: range(<span class="hljs-number">7</span>)})  <span class="hljs-comment"># df1中有多个重复的a、b、c</span>
+  
+  df2 = pd.DataFrame({<span class="hljs-string">'key'</span>: [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'d'</span>], <span class="hljs-string">'data2'</span>: range(<span class="hljs-number">3</span>)})  <span class="hljs-comment"># df2中只有唯一的a、b、c（这很重要，如果df2中的键也存在重复的，那么合并的结果将是笛卡尔积，后面会介绍）</span>
+  
+  <span class="hljs-comment"># 注</span>
+  <span class="hljs-comment"># 0. df1和df2具有公共的列（key）</span>
+  <span class="hljs-comment"># 1. df1中的c在df2中不存在 </span>
+  &lt;!--￼<span class="hljs-number">6</span>--&gt;
+
+</code></pre>
+</li>
+<li>
+<p><strong>注</strong>：由于 c 不是公共的键，因此合并后不存在</p>
 </li>
 </ul>
 </li>
+<li>
+<p>实例2（内连接）：在列名不同时，分别指定左右键，然后合并df1、df2</p>
+<ul>
+<li>
+<pre class="highlight"><code class="python">  df3 = pd.DataFrame({<span class="hljs-string">'lkey'</span>: [<span class="hljs-string">'b'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>],<span class="hljs-string">'data1'</span>: range(<span class="hljs-number">7</span>)})
+  df4 = pd.DataFrame({<span class="hljs-string">'rkey'</span>: [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'d'</span>], <span class="hljs-string">'data2'</span>: range(<span class="hljs-number">3</span>)})
+  &lt;!--￼<span class="hljs-number">7</span>--&gt;
+
+</code></pre>
+</li>
 </ul>
-<h2 id="分组聚合"><a class="markdownIt-Anchor" href="#分组聚合"></a> 分组聚合</h2>
+</li>
+<li>
+<p>实例3（左连接+笛卡尔积）：合并df1、df2</p>
+<ul>
+<li>
+<pre class="highlight"><code class="python">  df1 = pd.DataFrame({<span class="hljs-string">'key'</span>: [<span class="hljs-string">'b'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>], <span class="hljs-string">'data1'</span>: range(<span class="hljs-number">6</span>)})
+  df2 = pd.DataFrame({<span class="hljs-string">'key'</span>: [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'d'</span>], <span class="hljs-string">'data2'</span>: range(<span class="hljs-number">5</span>)})  <span class="hljs-comment"># df2 中 key 的值不是唯一的，因此合并时会产生笛卡尔积</span>
+  &lt;!--￼<span class="hljs-number">8</span>--&gt;
+
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>实例4（根据多个键合并）</p>
+<ul>
+<li>
+<pre class="highlight"><code class="python">  left = pd.DataFrame({<span class="hljs-string">'key1'</span>: [<span class="hljs-string">'foo'</span>, <span class="hljs-string">'foo'</span>, <span class="hljs-string">'bar'</span>], <span class="hljs-string">'key2'</span>: [<span class="hljs-string">'one'</span>, <span class="hljs-string">'two'</span>, <span class="hljs-string">'one'</span>], <span class="hljs-string">'lval'</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]})
+  right = pd.DataFrame({<span class="hljs-string">'key1'</span>: [<span class="hljs-string">'foo'</span>, <span class="hljs-string">'foo'</span>, <span class="hljs-string">'bar'</span>, <span class="hljs-string">'bar'</span>], <span class="hljs-string">'key2'</span>: [<span class="hljs-string">'one'</span>, <span class="hljs-string">'one'</span>, <span class="hljs-string">'one'</span>, <span class="hljs-string">'two'</span>], <span class="hljs-string">'rval'</span>: [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>]})
+  &lt;!--￼<span class="hljs-number">9</span>--&gt;
+
+</code></pre>
+</li>
+<li>
+<p><strong>注</strong>：根据多个键合并时，可将多个键看成一个整体来理解。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>实例5（指定重复列名的后缀）</p>
+<ul>
+<li>
+<pre class="highlight"><code class="python">  <span class="hljs-comment"># 沿用实例4的left、right</span>
+  pd.merge(left, right, on=<span class="hljs-string">'key1'</span>, sort=<span class="hljs-string">'key1'</span>)  <span class="hljs-comment"># 不定后缀时</span>
+  pd.merge(left, right, on=<span class="hljs-string">'key1'</span>, sort=<span class="hljs-string">'key1'</span>, suffixes=[<span class="hljs-string">'_left'</span>, <span class="hljs-string">'_right'</span>])  <span class="hljs-comment"># 通过 suffixes 参数指定后缀</span>
+  &lt;!--￼<span class="hljs-number">10</span>--&gt;
+
+</code></pre>
+</li>
+<li>
+<pre class="highlight"><code class="python">  pd.merge(left1, right1, left_on=<span class="hljs-string">'key'</span>, right_index=<span class="hljs-literal">True</span>) 
+  <span class="hljs-comment"># 左边的键是列名，因此用 left_on 指定</span>
+  <span class="hljs-comment"># 右边的键是行索引名，因此用 right_index 指定</span>
+  &lt;!--￼<span class="hljs-number">11</span>--&gt;
+
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<pre class="highlight"><code class="python">  student.drop(<span class="hljs-string">'Age'</span>, axis=<span class="hljs-number">1</span>).groupby(<span class="hljs-string">'Sex'</span>).max()
+  &lt;!--￼<span class="hljs-number">12</span>--&gt;
+
+</code></pre>
+</li>
+</ul>
+<p>实例3（多分组键+多统计量）：统计各性别中不同年龄学生的最大身高、体重以及最小身高、体重</p>
+<ul>
+<li>
+<pre class="highlight"><code class="python">  <span class="hljs-comment"># student 沿用实例1</span>
+  student.drop(<span class="hljs-string">'Name'</span>, axis=<span class="hljs-number">1</span>).groupby([<span class="hljs-string">'Sex'</span>, <span class="hljs-string">'Age'</span>]).agg([np.max, np.min])
+  &lt;!--￼<span class="hljs-number">13</span>--&gt;
+
+</code></pre>
+</li>
+<li>
+<p>参数</p>
+<ul>
+<li>columns：一般是列名或者列名组成的列表。表示分组键。</li>
+<li>values：一般是列名或者列名组成的列表。表示要聚合的对象。</li>
+<li>aggfunc：聚合函数，默认是取均值（mean）</li>
+</ul>
+</li>
+<li>
+<p><strong>注</strong>：使用 pivot_table 后返回的是一个Series（堆叠后的Dataframe），如果希望返回Dataframe，需要再使用 unstack 方法。</p>
+</li>
+</ul>
+<h3 id="交叉表"><a class="markdownIt-Anchor" href="#交叉表"></a> 交叉表</h3>
+<h1 id="索引对象"><a class="markdownIt-Anchor" href="#索引对象"></a> 索引对象</h1>
+<h2 id="多索引对象"><a class="markdownIt-Anchor" href="#多索引对象"></a> 多索引对象</h2>
+<h3 id="创建"><a class="markdownIt-Anchor" href="#创建"></a> 创建</h3>
+<h3 id="访问"><a class="markdownIt-Anchor" href="#访问"></a> 访问</h3>
 <h1 id="数据可视化"><a class="markdownIt-Anchor" href="#数据可视化"></a> 数据可视化</h1>
 
             </article>
